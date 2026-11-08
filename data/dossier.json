@@ -1,0 +1,427 @@
+{
+  "reviewed_on": "8 November 2026",
+  "records": [
+    {
+      "id": "structured-alpha-criminal",
+      "sort_date": "2023-07-12",
+      "date_label": "2014–2020 conduct · sentenced 12 July 2023",
+      "category": "Securities fraud",
+      "evidence_class": "Regulatory or criminal outcome",
+      "geography": "United States",
+      "title": "Structured Alpha funds: AGI U.S. pleaded guilty to securities fraud",
+      "entity": "Allianz Global Investors U.S. LLC",
+      "summary": "The DOJ said AGI U.S. concealed fund downside risks, misrepresented hedging and altered investor materials. It pleaded guilty to one count of securities fraud and was sentenced in 2023.",
+      "details": [
+        "The funds held more than USD 11 billion in assets at their peak.",
+        "The sentence included more than USD 2.33 billion in fines, USD 3.23 billion in restitution and more than USD 463 million in forfeiture.",
+        "The DOJ separately reported civil settlements of more than USD 5 billion. These figures are kept separate and are not added together here."
+      ],
+      "scope_note": "This is a criminal outcome against the U.S. asset-management subsidiary. Allianz SE's 2022 statement says the DOJ did not find knowledge of or participation in the misconduct at Allianz SE or other Allianz Group entities. The sources reviewed do not connect the case to Allianz Suisse or trading in Allianz shares.",
+      "source_ids": ["doj-structured", "allianz-structured-response"],
+      "tags": ["Group-level", "Criminal" ]
+    },
+    {
+      "id": "structured-alpha-managers",
+      "sort_date": "2025-12-05",
+      "date_label": "Judgments entered 26 November 2025 · announced 5 December 2025",
+      "category": "Securities fraud",
+      "evidence_class": "Regulatory or criminal outcome",
+      "geography": "United States",
+      "title": "SEC obtained final judgments against three former portfolio managers",
+      "entity": "Gregoire Tournant, Trevor Taylor and Stephen Bond-Nelson",
+      "summary": "The SEC reported final civil judgments and industry bars connected to the Structured Alpha scheme. Tournant had separately pleaded guilty to investment-adviser fraud.",
+      "details": [
+        "The SEC says investors placed about USD 11 billion into Structured Alpha and that investor materials were manipulated to conceal risk.",
+        "The judgments followed parallel criminal proceedings. The SEC release reports forfeiture amounts for each manager."
+      ],
+      "scope_note": "Individual cases involving former U.S. portfolio managers. They do not establish misconduct by Allianz Suisse executives.",
+      "source_ids": ["sec-manager-judgments"],
+      "tags": ["Named individuals", "Group-level"]
+    },
+    {
+      "id": "asic-travel-insurance",
+      "sort_date": "2025-02-28",
+      "date_label": "2016–2018 conduct · convictions 28 February 2025",
+      "category": "Insurance sales disclosures",
+      "evidence_class": "Regulatory or criminal outcome",
+      "geography": "Australia",
+      "title": "Allianz Australia and AWP convicted over travel-insurance statements",
+      "entity": "Allianz Australia Insurance Limited and AWP Australia Pty Ltd",
+      "summary": "The NSW Supreme Court convicted the companies after misleading online information overstated the travel-insurance benefits available without adequately presenting sub-limits, terms and exclusions.",
+      "details": [
+        "The court imposed criminal fines of AUD 13.5 million on Allianz Australia and AUD 3.3 million on AWP Australia.",
+        "ASIC said the conduct exposed thousands of customers to a risk of misunderstanding their cover."
+      ],
+      "scope_note": "Confirmed insurance-business misconduct in Australia. It is not an Allianz Suisse case.",
+      "source_ids": ["asic-travel"],
+      "tags": ["Insurance", "Criminal"]
+    },
+    {
+      "id": "cssf-aml",
+      "sort_date": "2025-04-04",
+      "date_label": "Inspection began 12 November 2018 · fine imposed 25 March 2022 · court confirmed 7 February 2025",
+      "category": "AML/CFT controls",
+      "evidence_class": "Regulatory or criminal outcome",
+      "geography": "Luxembourg",
+      "title": "CSSF fine for AML/CFT control failures upheld by the Luxembourg Administrative Court",
+      "entity": "Allianz Global Investors GmbH, Luxembourg Branch",
+      "summary": "The CSSF imposed a EUR 283,000 administrative fine after finding persistent deficiencies in the branch's anti-money-laundering and counter-terrorist-financing framework. The Administrative Court confirmed all aspects of the sanction in 2025.",
+      "details": [
+        "The CSSF cited a risk analysis that did not cover the branch's full activity, investor due-diligence and monitoring gaps, missing management approval for intermediary files, and incomplete screening evidence.",
+        "The CSSF also cited an insufficient internal audit cycle. The branch told the CSSF the corrective measures had since been fully implemented."
+      ],
+      "scope_note": "A confirmed regulatory sanction against a Luxembourg asset-management branch, not Allianz Suisse. The corrective-measures statement is attributed to the branch in the CSSF document.",
+      "source_ids": ["cssf-lux"],
+      "tags": ["Asset management", "AML"]
+    },
+    {
+      "id": "swiss-front-running",
+      "sort_date": "2010-09-06",
+      "date_label": "2000–2001 transactions · convictions reported 6 September 2010",
+      "category": "Employee trading conduct",
+      "evidence_class": "Reported court outcome",
+      "geography": "Switzerland",
+      "title": "Former Allianz asset manager convicted in a Zurich front-running case",
+      "entity": "Former Allianz Asset Management portfolio manager and two associates",
+      "summary": "SWI swissinfo.ch reported that a former portfolio manager passed advance knowledge of Allianz stock orders to associates, who traded before the orders. The report says the participants were convicted in Zurich.",
+      "details": [
+        "The reported transactions took place from November 2000 to April 2001.",
+        "SWI describes Allianz as the victim of the scheme, not its beneficiary."
+      ],
+      "scope_note": "Historical employee-level conduct reported by a news service. It is not evidence of an Allianz policy or institutional market manipulation by Allianz.",
+      "source_ids": ["swissinfo-front-running"],
+      "tags": ["Historical", "Allianz described as victim"]
+    },
+    {
+      "id": "zurich-life-applications",
+      "sort_date": "2023-01-23",
+      "date_label": "Reported 15 December 2022 · follow-up 23 January 2023",
+      "category": "Sales controls and application completeness",
+      "evidence_class": "Reported allegation",
+      "geography": "Switzerland",
+      "title": "Reported gaps in Zurich life-insurance applications",
+      "entity": "Allianz Suisse Zurich general agency and an external broker",
+      "summary": "Inside Paradeplatz reported that about 1,000 of roughly 2,500 applications from one broker were incomplete and that agency staff filled missing fields. The article said Allianz Suisse opened an internal compliance review and had ended the broker relationship.",
+      "details": [
+        "The report attributes the application counts and the account of a whistleblower alert to its sources. They have not been independently verified here.",
+        "A follow-up raised questions about what senior managers knew. Those claims remain unverified in the sources reviewed."
+      ],
+      "scope_note": "Unresolved media reporting, not a regulator or court finding. No public final outcome of Allianz Suisse's internal review was located in this research pass. A reported claim that FINMA visited Allianz was not independently verified and is not treated as a finding.",
+      "source_ids": ["ip-applications", "ip-followup"],
+      "tags": ["Whistleblower report", "Outcome not public"]
+    },
+    {
+      "id": "allianz24-credit-screening",
+      "sort_date": "2014-11-06",
+      "date_label": "Reported 6 November 2014",
+      "category": "Customer screening and data accuracy",
+      "evidence_class": "Reported allegation",
+      "geography": "Switzerland",
+      "title": "Allianz24 applicant rejected after an apparently incorrect credit check",
+      "entity": "Allianz Suisse online brand Allianz24",
+      "summary": "SRF reported that an applicant was refused motor insurance after a creditworthiness check appeared to associate her with debts belonging to people with the same name. An Allianz spokesperson told SRF there were no objective grounds for the decision and apologised for an error.",
+      "details": [
+        "Allianz denied operating a blacklist based on nationality or name.",
+        "The source reports that Allianz maintained a list of former customers with negative experiences."
+      ],
+      "scope_note": "A single media-reported error and company response. It does not establish a systematic blacklist or unlawful practice.",
+      "source_ids": ["srf-credit-screening"],
+      "tags": ["Customer data", "Company acknowledged error"]
+    },
+    {
+      "id": "swiss-court-benefit-denial",
+      "sort_date": "2024-06-19",
+      "date_label": "Federal Supreme Court judgment 19 June 2024",
+      "category": "Claims handling and coverage dispute",
+      "evidence_class": "Court decision",
+      "geography": "Switzerland",
+      "title": "Federal Supreme Court set aside Allianz Suisse's denial of accident benefits in one case",
+      "entity": "Allianz Suisse Versicherungs-Gesellschaft AG · cases 8C_485/2023 and 8C_510/2023",
+      "summary": "The Federal Supreme Court held that Allianz Suisse owed accident-insurance benefits for a 2020 injury and set aside the prior cantonal judgment and Allianz's contrary decision.",
+      "details": [
+        "The judgment concerned the insurance status of a part-time employee who also worked as a self-employed farmer.",
+        "The Court allowed the claim and ordered the cantonal proceedings' costs and compensation to be reassessed."
+      ],
+      "scope_note": "A specific, primary-source court outcome. It supports that Allianz Suisse lost this coverage dispute, not a claim of a broader claims-handling pattern.",
+      "source_ids": ["bger-2024-8c485"],
+      "tags": ["Claims handling", "Individual case"]
+    },
+    {
+      "id": "his-policy",
+      "sort_date": "2026-11-08",
+      "date_label": "Current Allianz Suisse disclosure, accessed 8 November 2026",
+      "category": "HIS and personal-data handling",
+      "evidence_class": "Official policy",
+      "geography": "Switzerland",
+      "title": "Allianz Suisse's HIS disclosure describes challenge and deletion rights",
+      "entity": "Allianz Suisse and the Swiss Hinweis- und Informationssystem (HIS)",
+      "summary": "Allianz says an HIS entry alone cannot justify refusing a claim. Its disclosure lists the grounds for an entry, individual access and correction routes, and automatic deletion seven years after the loss date.",
+      "details": [
+        "The company says entries can be challenged if the legal grounds are absent or the data are incorrect.",
+        "The policy also describes data shared with the HIS operator and the system's role in claim review."
+      ],
+      "scope_note": "This is Allianz's published policy statement. It describes the company's stated process and rights; it is not an independent audit of how any individual claim was handled.",
+      "source_ids": ["allianz-his"],
+      "tags": ["Privacy", "Company policy"]
+    },
+    {
+      "id": "annual-report-disclosure",
+      "sort_date": "2026-03-13",
+      "date_label": "Allianz Group 2025 Annual Report · Allianz Suisse 2025 report",
+      "category": "Executive and company disclosures",
+      "evidence_class": "Company disclosure",
+      "geography": "Group and Switzerland",
+      "title": "2025 reports describe compliance tracking and report no anti-corruption convictions",
+      "entity": "Allianz Group and Allianz Suisse",
+      "summary": "Allianz Group's 2025 Annual Report describes its Supervisory Proceedings Database, which includes criminal proceedings against Allianz personnel related to work and proceedings against group subsidiaries. Its anti-corruption and anti-bribery table shows dashes for convictions and fines in 2024 and 2025.",
+      "details": [
+        "The table is an Allianz disclosure and covers anti-corruption and anti-bribery convictions, not every category of misconduct or litigation.",
+        "Allianz Suisse's 2025 financial-condition report identifies the Swiss entities and describes corporate governance and risk controls."
+      ],
+      "scope_note": "Issuer disclosures are useful leads and scope descriptions, not independent confirmation that there were no other proceedings.",
+      "source_ids": ["allianz-ar-2025", "allianz-sfcr-2025"],
+      "tags": ["Self-reported", "Annual reporting"]
+    }
+  ],
+  "research_steps": [
+    {
+      "name": "FINMA enforcement and court databases",
+      "status": "Reviewed with attribution limit",
+      "coverage": "FINMA enforcement reporting and its anonymised insurance-law court-decision database.",
+      "result": "FINMA says enforcement and insurance-law court records are generally anonymised because of statutory restrictions. A search without a named Allianz result cannot establish that no Allianz-related proceeding exists.",
+      "source_ids": ["finma-enforcement", "finma-insurance-cases"],
+      "next_action": "Compare potentially relevant anonymised records against case facts from the dispute or other public records before attributing any to Allianz."
+    },
+    {
+      "name": "SEC EDGAR and securities-fraud matters",
+      "status": "Reviewed for the Structured Alpha case",
+      "coverage": "SEC enforcement records and the SEC's final judgments against three former Allianz portfolio managers.",
+      "result": "The SEC records confirm the Structured Alpha matter and the 2025 final judgments. This is securities fraud by an asset-management subsidiary and former managers, not evidence of trading in Allianz shares.",
+      "source_ids": ["sec-manager-judgments", "sec-edgar"],
+      "next_action": "A broader filing-by-filing search for other Allianz entities and securities matters remains open."
+    },
+    {
+      "name": "U.S. Department of Justice",
+      "status": "Reviewed",
+      "coverage": "DOJ charging and sentencing material for Structured Alpha.",
+      "result": "AGI U.S. pleaded guilty to securities fraud and was sentenced in 2023. The official DOJ release describes the conduct and separate fine, restitution and forfeiture amounts.",
+      "source_ids": ["doj-structured"]
+    },
+    {
+      "name": "ASIC Australia",
+      "status": "Reviewed",
+      "coverage": "ASIC's official release and court outcome for Allianz Australia and AWP.",
+      "result": "The NSW Supreme Court convicted both companies in February 2025 over misleading travel-insurance web disclosures and imposed AUD 16.8 million in combined criminal fines.",
+      "source_ids": ["asic-travel"]
+    },
+    {
+      "name": "CSSF Luxembourg",
+      "status": "Reviewed",
+      "coverage": "CSSF's named sanction document, including the appeal outcome.",
+      "result": "The EUR 283,000 AML/CFT fine against Allianz Global Investors' Luxembourg branch was upheld by the Administrative Court in February 2025. The regulator records the branch's statement that corrective measures had been implemented.",
+      "source_ids": ["cssf-lux"]
+    },
+    {
+      "name": "Allianz directors' dealings",
+      "status": "Register found; pattern review open",
+      "coverage": "Allianz's official directors' dealings page and its EQS publication feed.",
+      "result": "The register is available and includes routine acquisitions under management shareholding requirements. No suspicious timing or insider-trading conclusion is drawn from a date alone.",
+      "source_ids": ["allianz-directors", "eqs-directors"],
+      "next_action": "Review individual notifications alongside verified announcement dates, transaction type and each executive's disclosed role."
+    },
+    {
+      "name": "Violation Tracker",
+      "status": "Lead index reviewed",
+      "coverage": "Current-parent Allianz summary in the U.S. Violation Tracker database.",
+      "result": "The aggregator lists 54 current-parent records and reports USD 6.95 billion in adjusted penalties. It warns that current parent links may differ from ownership at the time and that case amounts can overlap. The total is a screening lead, not an independently verified Allianz Suisse figure.",
+      "source_ids": ["violation-tracker"],
+      "next_action": "Verify each relevant record against the named regulator, court or settlement document before adding it as a finding."
+    },
+    {
+      "name": "Swiss Federal Supreme Court and court records",
+      "status": "Selected records reviewed",
+      "coverage": "Official Federal Supreme Court search and a 2024 judgment naming Allianz Suisse in an accident-insurance dispute.",
+      "result": "In cases 8C_485/2023 and 8C_510/2023, the Federal Supreme Court set aside the prior decision and held that Allianz Suisse owed benefits in that individual case.",
+      "source_ids": ["bger-2024-8c485", "finma-insurance-cases"],
+      "next_action": "Expand the search across civil, insurance and criminal decisions for 2010–2026 and record outcomes case by case."
+    },
+    {
+      "name": "Allianz annual reports and Allianz Suisse SFCR",
+      "status": "Latest 2025 reports reviewed for disclosures",
+      "coverage": "Allianz Group Annual Report 2025 and Allianz Suisse 2025 report on financial condition.",
+      "result": "The group report describes its internal supervisory-proceedings database and gives a limited anti-corruption/anti-bribery conviction table. The Swiss report supplies local governance and risk disclosures.",
+      "source_ids": ["allianz-ar-2025", "allianz-sfcr-2025"],
+      "next_action": "Extract proceedings, claims and governance disclosures for each year in the 2010–2026 window."
+    },
+    {
+      "name": "Swiss whistleblower and claims-handling reporting",
+      "status": "Reported items recorded; one outcome undisclosed",
+      "coverage": "Inside Paradeplatz reporting on the Zurich life applications case, SRF reporting on Allianz24 screening and a selected Federal Supreme Court case.",
+      "result": "The Zurich life-application account remains an allegation with no public final internal-review outcome located in this pass. SRF reported that Allianz acknowledged an error in one applicant-screening incident. The court case is an individual coverage dispute, not evidence of a pattern.",
+      "source_ids": ["ip-applications", "ip-followup", "srf-credit-screening", "bger-2024-8c485"],
+      "next_action": "Search for later official statements, court proceedings and independently corroborating reporting on the Zurich application review."
+    },
+    {
+      "name": "HIS and personal-data practices",
+      "status": "Official policy reviewed",
+      "coverage": "Allianz Suisse's current HIS disclosure.",
+      "result": "Allianz states that a HIS entry alone cannot justify denying benefits, describes correction and deletion rights, and says entries are automatically deleted seven years after the loss date.",
+      "source_ids": ["allianz-his"],
+      "next_action": "Compare the published rules with the data and reasoning in the user's own case before drawing any case-specific conclusion."
+    }
+  ],
+  "sources": [
+    {
+      "id": "doj-structured",
+      "publisher": "U.S. Department of Justice",
+      "title": "Allianz Global Investors U.S. Sentenced In Connection With Multibillion-Dollar Fraud Scheme",
+      "url": "https://www.justice.gov/usao-sdny/pr/allianz-global-investors-us-sentenced-connection-multibillion-dollar-fraud-scheme",
+      "source_type": "Primary · DOJ sentencing release",
+      "use": "Criminal plea, scheme description, sentencing amounts and victim compensation figures."
+    },
+    {
+      "id": "sec-manager-judgments",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "SEC Obtains Final Judgments Against Three Allianz Portfolio Managers",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26432",
+      "source_type": "Primary · SEC litigation release",
+      "use": "Final judgments, manager names, SEC allegations and parallel criminal outcomes."
+    },
+    {
+      "id": "allianz-structured-response",
+      "publisher": "Allianz SE",
+      "title": "Allianz SE announces resolution of U.S. governmental investigations concerning Structured Alpha",
+      "url": "https://www.allianz.com/en/investor_relations/announcements/ir_announcements/220517.html",
+      "source_type": "Primary · company statement",
+      "use": "Allianz's account of the DOJ findings on knowledge or participation outside the U.S. Structured Products Group."
+    },
+    {
+      "id": "asic-travel",
+      "publisher": "Australian Securities and Investments Commission",
+      "title": "Allianz and AWP convicted and fined AUD 16.8 million for making false or misleading statements",
+      "url": "https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2025-releases/25-028mr-allianz-and-awp-convicted-and-fined-168-million-for-making-false-or-misleading-statements",
+      "source_type": "Primary · regulator and court outcome",
+      "use": "Convictions, conduct period and company-specific fines."
+    },
+    {
+      "id": "cssf-lux",
+      "publisher": "Commission de Surveillance du Secteur Financier",
+      "title": "Administrative sanction of 25 March 2022 for AML/CFT non-compliance",
+      "url": "https://www.cssf.lu/wp-content/uploads/S_88_GFI_Allianz_Global_Investors_GmbH_Zweigniederlassung_Luxembourg_2022.03.25_en.pdf",
+      "source_type": "Primary · regulator decision",
+      "use": "Named Luxembourg branch, EUR 283,000 sanction, AML/CFT findings and 2025 court confirmation."
+    },
+    {
+      "id": "swissinfo-front-running",
+      "publisher": "SWI swissinfo.ch / Keystone-SDA",
+      "title": "Prison sentences for insider trading by a former Allianz employee",
+      "url": "https://www.swissinfo.ch/ger/bezger-freiheitsstrafen-fuer-insidergeschaefte-eines-ehem-allianz-mitarbeiters/28277194",
+      "source_type": "Secondary · court reporting",
+      "use": "Reported Zurich convictions in a front-running case; the article says Allianz was the victim."
+    },
+    {
+      "id": "ip-applications",
+      "publisher": "Inside Paradeplatz",
+      "title": "Allianz erschüttert von 1’000 Lebens-Anträgen mit Lücken",
+      "url": "https://insideparadeplatz.ch/2022/12/15/allianz-erschuettert-von-1000-fake-lebens-antraegen/",
+      "source_type": "Secondary · investigative reporting",
+      "use": "Unverified allegations about incomplete Zurich life-insurance applications and a reported company review."
+    },
+    {
+      "id": "ip-followup",
+      "publisher": "Inside Paradeplatz",
+      "title": "Erdbeben bei Allianz Suisse: Zürich-Generalagent raus",
+      "url": "https://insideparadeplatz.ch/2023/01/23/erdbeben-bei-allianz-suisse-zuerich-generalagent-raus/",
+      "source_type": "Secondary · follow-up reporting",
+      "use": "Follow-up allegations about management knowledge and an unverified report of FINMA involvement."
+    },
+    {
+      "id": "srf-credit-screening",
+      "publisher": "SRF",
+      "title": "Sorry, keine Versicherung mit Ihrem Namen!",
+      "url": "https://www.srf.ch/sendungen/kassensturz-espresso/versicherungen-sorry-keine-versicherung-mit-ihrem-namen",
+      "source_type": "Secondary · consumer reporting with company response",
+      "use": "One reported Allianz24 credit-screening error and Allianz's apology and response."
+    },
+    {
+      "id": "allianz-his",
+      "publisher": "Allianz Suisse",
+      "title": "Hinweis- und Informationssystem (HIS)",
+      "url": "https://www.allianz.ch/de/informationen/his.html",
+      "source_type": "Primary · current company policy",
+      "use": "Published HIS grounds, claim-use limits, access rights, correction routes and seven-year deletion rule."
+    },
+    {
+      "id": "bger-2024-8c485",
+      "publisher": "Swiss Federal Supreme Court",
+      "title": "Judgments 8C_485/2023 and 8C_510/2023, 19 June 2024",
+      "url": "https://www.bger.ch/ext/eurospider/live/fr/php/aza/http/index.php?docid=2021-02-03-8C_581-2020&from_date=&highlight_docid=2024-06-19-8C_485-2023&lang=fr&number_of_ranks=2186&page=5&rank=42&to_date=&top_subcollection_aza=all&type=highlight_simple_similar_documents",
+      "source_type": "Primary · court judgment",
+      "use": "Specific accident-insurance case where the Court held Allianz Suisse owed benefits."
+    },
+    {
+      "id": "finma-enforcement",
+      "publisher": "FINMA",
+      "title": "Enforcement reporting",
+      "url": "https://www.finma.ch/en/documentation/enforcement-reporting/",
+      "source_type": "Primary · regulator database",
+      "use": "Explains selected rulings, anonymised enforcement case reports and court decisions."
+    },
+    {
+      "id": "finma-insurance-cases",
+      "publisher": "FINMA",
+      "title": "Civil judgments in insurance law",
+      "url": "https://www.finma.ch/dokumentation/versicherungsrechtliche-entscheide/",
+      "source_type": "Primary · anonymised court database",
+      "use": "Swiss private-insurance judgments since 1994. Records are anonymised."
+    },
+    {
+      "id": "sec-edgar",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "title": "EDGAR full-text search",
+      "url": "https://www.sec.gov/edgar/search/",
+      "source_type": "Primary · filings database",
+      "use": "Search issuer filings and securities disclosures."
+    },
+    {
+      "id": "allianz-directors",
+      "publisher": "Allianz SE",
+      "title": "Directors' dealings and equity holdings",
+      "url": "https://www.allianz.com/en/investor_relations/announcements/directors-dealings.html",
+      "source_type": "Primary · company disclosure index",
+      "use": "Explains Article 19 MAR reporting and links to Allianz SE notifications."
+    },
+    {
+      "id": "eqs-directors",
+      "publisher": "EQS News",
+      "title": "Allianz SE directors' dealings feed",
+      "url": "https://www.eqs-news.com/company/allianz-se/news/5b70b19c-ea7c-11e8-902f-2c44fd856d8c?newsType=directors_dealings",
+      "source_type": "Primary · transaction notification feed",
+      "use": "Transaction-level notices disclosed by Allianz SE. Dates alone are not evidence of insider trading."
+    },
+    {
+      "id": "violation-tracker",
+      "publisher": "Good Jobs First · Violation Tracker",
+      "title": "Allianz current-parent penalty summary",
+      "url": "https://violationtracker.goodjobsfirst.org/parent/allianz",
+      "source_type": "Secondary · aggregator",
+      "use": "Discovery index only. Parent links reflect current ownership and totals can include overlapping agency records."
+    },
+    {
+      "id": "allianz-ar-2025",
+      "publisher": "Allianz SE",
+      "title": "Annual Report 2025",
+      "url": "https://www.allianz.com/content/dam/onemarketing/azcom/Allianz_com/investor-relations/en/results-reports/annual-report/ar-2025/en-allianz-group-annual-report-2025.pdf",
+      "source_type": "Primary · company filing",
+      "use": "Supervisory proceedings database description and limited anti-corruption/bribery disclosure table."
+    },
+    {
+      "id": "allianz-sfcr-2025",
+      "publisher": "Allianz Suisse",
+      "title": "Report on the Financial Condition 2025",
+      "url": "https://www.allianz.ch/content/dam/onemarketing/azch/common/allianz/de/medienberichte/Bericht_%C3%BCber_die_Finanzlage_ASV_2025.pdf",
+      "source_type": "Primary · Swiss solvency disclosure",
+      "use": "Local entity structure, governance and risk disclosures."
+    }
+  ]
+}
