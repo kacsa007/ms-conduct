@@ -1,0 +1,352 @@
+{
+  "retrieved_at": "2026-11-08T11:29:43+00:00",
+  "source_count": 19,
+  "snapshot_count": 12,
+  "output_file": "source_snapshots.jsonl",
+  "note": "Sources are collected from the dossier's named source register. Access failures are preserved as status rows.",
+  "sources": [
+    {
+      "source_id": "doj-structured",
+      "source": "U.S. Department of Justice",
+      "title": "Allianz Global Investors U.S. Sentenced In Connection With Multibillion-Dollar Fraud Scheme",
+      "url": "https://www.justice.gov/usao-sdny/pr/allianz-global-investors-us-sentenced-connection-multibillion-dollar-fraud-scheme",
+      "alternate_url": "",
+      "status": "access_challenge",
+      "snapshot_count": 0,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "note": "The server returned an automated-access challenge instead of the source document."
+    },
+    {
+      "source_id": "doj-structured-information",
+      "source": "U.S. Department of Justice",
+      "title": "Information, United States v. Allianz Global Investors U.S. LLC",
+      "url": "https://www.justice.gov/usao-sdny/press-release/file/1506881/dl",
+      "alternate_url": "",
+      "status": "access_challenge",
+      "snapshot_count": 0,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "note": "The server returned an automated-access challenge instead of the source document."
+    },
+    {
+      "source_id": "sec-manager-judgments",
+      "source": "U.S. Securities and Exchange Commission",
+      "title": "SEC Obtains Final Judgments Against Three Allianz Portfolio Managers",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26432",
+      "alternate_url": "",
+      "status": "fetched",
+      "snapshot_count": 1,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "content_type": "text/html; charset=utf-8",
+      "content_length": 69245,
+      "extracted_characters": 3104
+    },
+    {
+      "source_id": "allianz-structured-response",
+      "source": "Allianz SE",
+      "title": "Allianz SE announces resolution of U.S. governmental investigations concerning Structured Alpha",
+      "url": "https://www.allianz.com/en/mediacenter/news/financials/business_results/220517_Allianz-SE-announces-resolution-of-US-governmental-investigations-concerning-Structured-Alpha.html",
+      "alternate_url": "https://www.allianz.com/en/investor_relations/announcements/ir_announcements/220517.html",
+      "status": "blocked",
+      "snapshot_count": 0,
+      "http_status": 403,
+      "note": "The official source denied automated access (HTTP 403).",
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 403
+        },
+        {
+          "route": "fallback",
+          "http_status": 403
+        }
+      ]
+    },
+    {
+      "source_id": "asic-travel",
+      "source": "Australian Securities and Investments Commission",
+      "title": "Allianz and AWP convicted and fined AUD 16.8 million for making false or misleading statements",
+      "url": "https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2025-releases/25-028mr-allianz-and-awp-convicted-and-fined-168-million-for-making-false-or-misleading-statements",
+      "alternate_url": "",
+      "status": "fetched",
+      "snapshot_count": 1,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "content_type": "text/html; charset=utf-8",
+      "content_length": 18893,
+      "extracted_characters": 2611
+    },
+    {
+      "source_id": "cssf-lux",
+      "source": "Commission de Surveillance du Secteur Financier",
+      "title": "Administrative sanction of 25 March 2022 for AML/CFT non-compliance",
+      "url": "https://www.cssf.lu/wp-content/uploads/S_88_GFI_Allianz_Global_Investors_GmbH_Zweigniederlassung_Luxembourg_2022.03.25_en.pdf",
+      "alternate_url": "",
+      "status": "fetched",
+      "snapshot_count": 1,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "content_type": "application/pdf",
+      "content_length": 101698,
+      "extracted_characters": 7403
+    },
+    {
+      "source_id": "ip-applications",
+      "source": "Inside Paradeplatz",
+      "title": "Allianz erschüttert von 1’000 Lebens-Anträgen mit Lücken",
+      "url": "https://insideparadeplatz.ch/2022/12/15/allianz-erschuettert-von-1000-fake-lebens-antraegen/",
+      "alternate_url": "",
+      "status": "fetched",
+      "snapshot_count": 1,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "content_type": "text/html; charset=UTF-8",
+      "content_length": 327356,
+      "extracted_characters": 3095
+    },
+    {
+      "source_id": "ip-followup",
+      "source": "Inside Paradeplatz",
+      "title": "Erdbeben bei Allianz Suisse: Zürich-Generalagent raus",
+      "url": "https://insideparadeplatz.ch/2023/01/23/erdbeben-bei-allianz-suisse-zuerich-generalagent-raus/",
+      "alternate_url": "",
+      "status": "fetched",
+      "snapshot_count": 1,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "content_type": "text/html; charset=UTF-8",
+      "content_length": 272539,
+      "extracted_characters": 4302
+    },
+    {
+      "source_id": "ip-followup-dec19",
+      "source": "Inside Paradeplatz",
+      "title": "Skandal bei Allianz Suisse: CEO gerät in Fokus",
+      "url": "https://insideparadeplatz.ch/2022/12/19/skandal-bei-allianz-suisse-ceo-geraet-in-fokus/",
+      "alternate_url": "",
+      "status": "fetched",
+      "snapshot_count": 1,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "content_type": "text/html; charset=UTF-8",
+      "content_length": 313068,
+      "extracted_characters": 3568
+    },
+    {
+      "source_id": "srf-credit-screening",
+      "source": "SRF",
+      "title": "Sorry, keine Versicherung mit Ihrem Namen!",
+      "url": "https://www.srf.ch/sendungen/kassensturz-espresso/versicherungen-sorry-keine-versicherung-mit-ihrem-namen",
+      "alternate_url": "",
+      "status": "fetched",
+      "snapshot_count": 1,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "content_type": "text/html; charset=UTF-8",
+      "content_length": 112118,
+      "extracted_characters": 4471
+    },
+    {
+      "source_id": "allianz-his",
+      "source": "Allianz Suisse",
+      "title": "Notes and information on the Swiss insurance HIS",
+      "url": "https://www.allianz.ch/en/information/his.html",
+      "alternate_url": "https://www.allianz.ch/de/informationen/his.html",
+      "status": "fetched",
+      "snapshot_count": 1,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "content_type": "text/html;charset=utf-8",
+      "content_length": 83880,
+      "extracted_characters": 7807
+    },
+    {
+      "source_id": "bger-2024-8c485",
+      "source": "Swiss Federal Supreme Court",
+      "title": "Judgments 8C_485/2023 and 8C_510/2023, 19 June 2024",
+      "url": "https://www.bger.ch/ext/eurospider/live/fr/php/aza/http/index.php?docid=2021-02-03-8C_581-2020&from_date=&highlight_docid=2024-06-19-8C_485-2023&lang=fr&number_of_ranks=2186&page=5&rank=42&to_date=&top_subcollection_aza=all&type=highlight_simple_similar_documents",
+      "alternate_url": "",
+      "status": "request_error",
+      "snapshot_count": 0,
+      "note": "SSLError while retrieving the official source.",
+      "attempts": [
+        {
+          "route": "primary",
+          "error": "SSLError"
+        }
+      ]
+    },
+    {
+      "source_id": "bger-2016-8c193",
+      "source": "Swiss Federal Supreme Court",
+      "title": "Judgment 8C_193/2016, 26 October 2016",
+      "url": "https://relevancy.bger.ch/php/aza/http/index.php?docid=aza%3A%2F%2F26-10-2016-8C_193-2016&from_date=&insertion_date=&lang=fr&sort=relevance&type=simple_similar_documents&zoom=YES",
+      "alternate_url": "",
+      "status": "no_relevant_text",
+      "snapshot_count": 0,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "note": "The page loaded, but its extracted text did not match the linked finding."
+    },
+    {
+      "source_id": "finma-enforcement",
+      "source": "FINMA",
+      "title": "Enforcement reporting",
+      "url": "https://www.finma.ch/en/documentation/enforcement-reporting/",
+      "alternate_url": "",
+      "status": "fetched",
+      "snapshot_count": 1,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "content_type": "text/html; charset=utf-8",
+      "content_length": 61459,
+      "extracted_characters": 1627
+    },
+    {
+      "source_id": "finma-insurance-cases",
+      "source": "FINMA",
+      "title": "Civil judgments in insurance law",
+      "url": "https://www.finma.ch/dokumentation/versicherungsrechtliche-entscheide/",
+      "alternate_url": "",
+      "status": "fetched",
+      "snapshot_count": 1,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "content_type": "text/html; charset=utf-8",
+      "content_length": 70510,
+      "extracted_characters": 1773
+    },
+    {
+      "source_id": "sec-edgar",
+      "source": "U.S. Securities and Exchange Commission",
+      "title": "EDGAR full-text search",
+      "url": "https://www.sec.gov/edgar/search/",
+      "alternate_url": "",
+      "status": "skipped_index",
+      "snapshot_count": 0,
+      "note": "Search index; collect specific filings from the linked case sources instead."
+    },
+    {
+      "source_id": "allianz-ar-2025",
+      "source": "Allianz SE",
+      "title": "Annual Report 2025",
+      "url": "https://www.allianz.com/content/dam/onemarketing/azcom/Allianz_com/investor-relations/en/results-reports/annual-report/ar-2025/en-allianz-group-annual-report-2025.pdf",
+      "alternate_url": "https://www.allianz.com/en/investor_relations/results-reports/annual-reports.html",
+      "status": "fetched",
+      "snapshot_count": 1,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "content_type": "application/pdf",
+      "content_length": 15336550,
+      "extracted_characters": 1566451
+    },
+    {
+      "source_id": "allianz-sfcr-2025",
+      "source": "Allianz Suisse",
+      "title": "Report on the Financial Condition 2025",
+      "url": "https://www.allianz.ch/content/dam/onemarketing/azch/common/allianz/de/medienberichte/Bericht_%C3%BCber_die_Finanzlage_ASV_2025.pdf",
+      "alternate_url": "https://www.allianz.ch/de/ueber-uns/medien/geschaeftsbericht-kennzahlen.html",
+      "status": "fetched",
+      "snapshot_count": 1,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "content_type": "application/pdf",
+      "content_length": 905275,
+      "extracted_characters": 137456
+    },
+    {
+      "source_id": "cssf-lux-html",
+      "source": "Commission de Surveillance du Secteur Financier",
+      "title": "Administrative sanction of 25 March 2022",
+      "url": "https://www.cssf.lu/en/Document/administrative-sanction-of-25-march-2022/",
+      "alternate_url": "",
+      "status": "no_relevant_text",
+      "snapshot_count": 0,
+      "http_status": 200,
+      "attempts": [
+        {
+          "route": "primary",
+          "http_status": 200
+        }
+      ],
+      "note": "The page loaded, but its extracted text did not match the linked finding."
+    }
+  ]
+}

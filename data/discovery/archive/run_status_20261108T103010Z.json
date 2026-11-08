@@ -111,26 +111,26 @@
     {
       "source": "Allianz Suisse",
       "url": "https://www.allianz.ch/de/informationen/his.html",
-      "status": "error",
+      "status": "blocked",
       "http_status": 403,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.allianz.ch/de/informationen/his.html",
-      "candidate_count": 0
+      "candidate_count": 0,
+      "note": "The official source denied automated access (HTTP 403)."
     },
     {
       "source": "Allianz SE",
       "url": "https://www.allianz.com/content/dam/onemarketing/azcom/Allianz_com/investor-relations/en/results-reports/annual-report/ar-2025/en-allianz-group-annual-report-2025.pdf",
-      "status": "error",
+      "status": "blocked",
       "http_status": 403,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.allianz.com/content/dam/onemarketing/azcom/Allianz_com/investor-relations/en/results-reports/annual-report/ar-2025/en-allianz-group-annual-report-2025.pdf",
-      "candidate_count": 0
+      "candidate_count": 0,
+      "note": "The official source denied automated access (HTTP 403)."
     },
     {
       "source": "Allianz Suisse",
       "url": "https://www.allianz.ch/content/dam/onemarketing/azch/common/allianz/de/medienberichte/Bericht_%C3%BCber_die_Finanzlage_ASV_2025.pdf",
-      "status": "error",
+      "status": "blocked",
       "http_status": 403,
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.allianz.ch/content/dam/onemarketing/azch/common/allianz/de/medienberichte/Bericht_%C3%BCber_die_Finanzlage_ASV_2025.pdf",
-      "candidate_count": 0
+      "candidate_count": 0,
+      "note": "The official source denied automated access (HTTP 403)."
     }
   ]
 }

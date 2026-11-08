@@ -38,9 +38,16 @@ def source_link(source):
     label = "{}: {}".format(text(source.get("publisher")), text(source.get("title")))
     if not url:
         return html.escape(label)
-    return '<a href="{}" target="_blank" rel="noopener noreferrer">{}</a>'.format(
+    primary = '<a href="{}" target="_blank" rel="noopener noreferrer">{}</a>'.format(
         html.escape(url, quote=True), html.escape(label)
     )
+    alternate_url = safe_url(source.get("alternate_url"))
+    if alternate_url:
+        alternate_label = text(source.get("alternate_label", "Official alternate"))
+        primary += ' · <a href="{}" target="_blank" rel="noopener noreferrer">{}</a>'.format(
+            html.escape(alternate_url, quote=True), html.escape(alternate_label)
+        )
+    return primary
 
 
 def source_links(source_ids, sources):
@@ -147,7 +154,6 @@ st.markdown(
       .evidence-tag { display: inline-block; border: 1px solid #a9bac8; background: #f2f6f9; color: #263f54; padding: .15rem .45rem; margin: 0 .35rem .25rem 0; font-size: .9rem; }
       .evidence-details { color: var(--ink); margin: .35rem 0 .75rem; padding-left: 1.3rem; }
       .evidence-details li { margin: .18rem 0; line-height: 1.5; }
-      .evidence-scope { background: #f0f4f7; border-top: 1px solid var(--rule); padding: .7rem .8rem; margin-top: .7rem; font-size: .98rem; line-height: 1.55; }
       .evidence-sources { margin-top: .75rem; font-size: .95rem; line-height: 1.65; }
       .discovery-card { background: white; border: 1px solid var(--rule); padding: 1rem 1.2rem; margin: .8rem 0; }
       .discovery-label { color: #6e4300; background: #fff0c2; border: 1px solid #c38b20; display: inline-block; font-size: .9rem; font-weight: 800; padding: .2rem .55rem; margin-bottom: .55rem; }
@@ -198,7 +204,6 @@ def record_card(record):
           <div class="evidence-entity">{entity}</div>
           <div class="evidence-summary">{summary}</div>
           {details_html}
-          <div class="evidence-scope"><strong>Scope of this record:</strong> {scope_note}</div>
           <div class="evidence-sources"><strong>Sources</strong><br>{links}</div>
         </article>
         """.format(
@@ -212,7 +217,6 @@ def record_card(record):
             entity=html.escape(text(record.get("entity"))),
             summary=html.escape(text(record.get("summary"))),
             details_html='<ul class="evidence-details">{}</ul>'.format(details) if details else "",
-            scope_note=html.escape(text(record.get("scope_note"))),
             links=source_links(record.get("source_ids", []), sources),
         ),
         unsafe_allow_html=True,
@@ -224,7 +228,7 @@ with st.sidebar:
     st.caption("Allianz Suisse corporate conduct dossier")
     page = st.radio(
         "Go to",
-        ["Overview", "Findings", "Research plan", "Sources", "Discovery leads"],
+        ["Overview", "Findings", "Research plan", "Sources", "Collected sources"],
         label_visibility="collapsed",
     )
     st.markdown("---")
@@ -270,16 +274,15 @@ if page == "Overview":
         st.bar_chart(chart_data, horizontal=True, color="#0758a5", height=320)
         st.caption("Counts describe records in this research pass. A case can have more than one record.")
     with right:
-        st.subheader("What this file supports")
+        st.subheader("Records in this file")
         st.markdown(
             """
-            - Several confirmed group-level enforcement cases involve subsidiaries outside Switzerland.
-            - The selected Swiss court cases have different outcomes: a 2016 decision favored Allianz, while a 2024 decision required Allianz Suisse to pay benefits.
-            - The Zurich life-application story remains an unresolved media allegation in the sources reviewed.
-            - This record does not establish a general pattern of misconduct by Allianz Suisse.
+            - U.S. DOJ: Allianz Global Investors U.S. LLC, Structured Alpha, 2023.
+            - Luxembourg CSSF: Allianz Global Investors GmbH, Luxembourg Branch, AML/CFT sanction.
+            - Australia: Allianz Australia Insurance Limited and AWP Australia, travel-insurance convictions.
+            - Switzerland: Allianz24 screening report, Zurich life-application reporting, and Allianz Suisse court records.
             """
         )
-        st.info("FINMA and insurance-court records are anonymised. A name search with no named Allianz result cannot establish that no proceeding exists.")
 
     st.markdown("<div class='section-rule'></div>", unsafe_allow_html=True)
     st.subheader("Latest records")
@@ -318,7 +321,6 @@ elif page == "Findings":
                 text(record.get("title")),
                 text(record.get("entity")),
                 text(record.get("summary")),
-                text(record.get("scope_note")),
                 text(record.get("category")),
                 linked_source_text,
             ]
@@ -342,7 +344,6 @@ elif page == "Findings":
                 "geography": record["geography"],
                 "evidence_class": record["evidence_class"],
                 "summary": record["summary"],
-                "scope_note": record["scope_note"],
                 "sources": " | ".join(sources[source_id]["url"] for source_id in record["source_ids"]),
             }
             for record in visible_records
@@ -365,7 +366,7 @@ elif page == "Research plan":
         with st.expander(step_title, expanded=index <= 2):
             st.markdown("**Coverage**")
             st.write(step["coverage"])
-            st.markdown("**Result or limit**")
+            st.markdown("**Source result**")
             st.write(step["result"])
             if step.get("source_ids"):
                 st.markdown("**Sources**")
@@ -375,7 +376,6 @@ elif page == "Research plan":
                 st.write(step["next_action"])
 
     st.markdown("<div class='section-rule'></div>", unsafe_allow_html=True)
-    st.info("Do not combine unrelated subsidiaries, countries, legal regimes or evidence grades to infer a pattern.")
 
 
 elif page == "Sources":
@@ -411,8 +411,8 @@ elif page == "Sources":
 
 
 else:
-    st.subheader("Discovery leads")
-    st.write("Scraped results are unreviewed leads. Check the original source and confirm relevance before adding anything to the findings register.")
+    st.subheader("Collected sources")
+    st.write("The collector fetches source URLs already linked to findings and stores a short text excerpt, document hash and access status.")
     candidates, discovery_errors, discovery_files = load_discovery_candidates()
     latest_status, status_errors = load_latest_run_status()
     if discovery_errors:
@@ -422,46 +422,50 @@ else:
         st.warning("Could not read crawl status {}".format(error))
 
     if latest_status:
+        status_labels = {
+            "fetched": "Fetched",
+            "fetched_alternate": "Fetched official fallback",
+            "blocked": "Access denied",
+            "access_challenge": "Automated access challenge",
+            "no_relevant_text": "No relevant text",
+            "no_extractable_text": "No readable text",
+            "request_error": "Request failed",
+            "http_error": "HTTP error",
+            "rate_limited": "Rate limited",
+            "extraction_error": "Text extraction failed",
+            "skipped_large": "Over size limit",
+            "skipped_index": "Skipped index",
+        }
         status_rows = []
         for source_status in latest_status.get("sources", []):
-            common = {
-                "Source": text(source_status.get("source")),
-                "HTTP": text(source_status.get("http_status")),
-                "Status": text(source_status.get("status")),
-                "Candidates": text(source_status.get("candidate_count", "")),
-                "Note": text(source_status.get("note") or source_status.get("error")),
-            }
-            if source_status.get("queries"):
-                for query in source_status["queries"]:
-                    hits = text(query.get("result_count", ""))
-                    if hits and query.get("result_relation") == "gte":
-                        hits = "≥" + hits
-                    status_rows.append(
-                        {
-                            **common,
-                            "Query": text(query.get("term")),
-                            "Hits": hits,
-                            "Status": text(query.get("error") and "error" or source_status.get("status")),
-                            "Returned": text(query.get("returned_count", "")),
-                            "Note": text(query.get("error") or query.get("note") or common["Note"]),
-                        }
-                    )
-            else:
-                status_rows.append({**common, "Query": "", "Hits": "", "Returned": ""})
+            status_rows.append(
+                {
+                    "Source": text(source_status.get("source")),
+                    "Document": text(source_status.get("title")),
+                    "HTTP": text(source_status.get("http_status")),
+                    "Status": status_labels.get(source_status.get("status"), text(source_status.get("status"))),
+                    "Snapshots": text(source_status.get("snapshot_count", "")),
+                    "Note": text(source_status.get("note", "")),
+                }
+            )
         if status_rows:
-            st.markdown("#### Latest crawl coverage")
-            st.caption("A blocked or non-searchable source is shown with its status. It is not counted as a zero-result search.")
+            st.markdown("#### Source collection status")
+            st.caption("Access-denied sources remain listed. Open the official source links below to read them in a browser.")
             st.dataframe(pd.DataFrame(status_rows), hide_index=True, use_container_width=True)
+            with st.expander("Official source links"):
+                for source_status in latest_status.get("sources", []):
+                    source = sources.get(source_status.get("source_id"), source_status)
+                    st.markdown(source_link(source), unsafe_allow_html=True)
 
     if not discovery_files or not candidates:
         if discovery_files and discovery_errors:
-            st.info("No readable discovery candidates are available yet. Check the file errors above.")
+            st.info("No readable source snapshots are available yet. Check the file errors above.")
         else:
-            st.info("No discovery files yet. Candidates will appear here after the scraper writes JSONL files under data/discovery/.")
+            st.info("No source snapshots yet. Run the collector to fetch the named documents in the source register.")
     else:
         candidate_sources = sorted({text(item.get("source")) for item in candidates if text(item.get("source"))})
         search_col, source_col = st.columns([1.5, 1])
-        discovery_query = search_col.text_input("Search leads", placeholder="Title, entity, excerpt or matched term")
+        discovery_query = search_col.text_input("Search sources", placeholder="Title, entity, related record or excerpt")
         selected_source = source_col.selectbox("Source", ["All sources"] + candidate_sources)
         visible_candidates = []
         for candidate in candidates:
@@ -474,44 +478,41 @@ else:
                     text(candidate.get("source")),
                     text(candidate.get("text_excerpt")),
                     text(candidate.get("evidence_status")),
-                    " ".join(text(term) for term in candidate.get("matched_terms", [])),
+                    text(candidate.get("source_use")),
+                    " ".join(text(record) for record in candidate.get("related_records", [])),
                 ]
             ).lower()
             if discovery_query and discovery_query.lower() not in searchable:
                 continue
             visible_candidates.append(candidate)
         visible_candidates.sort(key=lambda item: text(item.get("retrieved_at")), reverse=True)
-        st.caption("{} of {} leads shown across {} file(s)".format(len(visible_candidates), len(candidates), len(discovery_files)))
+        st.caption("{} of {} source snapshots shown".format(len(visible_candidates), len(candidates)))
 
         for candidate in visible_candidates:
-            title = text(candidate.get("title")) or "Untitled lead"
+            title = text(candidate.get("title")) or "Untitled source"
             source = text(candidate.get("source")) or "Source not recorded"
-            file_name = text(candidate.get("_discovery_file"))
-            candidate_id = text(candidate.get("id"))
             with st.container(border=True):
-                st.markdown('<div class="discovery-label">UNREVIEWED LEAD</div>', unsafe_allow_html=True)
+                st.markdown('<div class="discovery-label">SOURCE SNAPSHOT</div>', unsafe_allow_html=True)
                 st.markdown("### {}".format(html.escape(title)))
                 meta = []
-                if text(candidate.get("date")):
-                    meta.append("Date: {}".format(text(candidate.get("date"))))
                 if text(candidate.get("entity")):
                     meta.append("Entity: {}".format(text(candidate.get("entity"))))
-                if text(candidate.get("evidence_status")):
-                    meta.append("Scraper status: {}".format(text(candidate.get("evidence_status"))))
+                if text(candidate.get("source_type")):
+                    meta.append("Record type: {}".format(text(candidate.get("source_type"))))
+                if text(candidate.get("content_type")):
+                    meta.append("Format: {}".format(text(candidate.get("content_type"))))
+                if candidate.get("extracted_characters"):
+                    meta.append("Extracted characters: {}".format(text(candidate.get("extracted_characters"))))
                 if text(candidate.get("retrieved_at")):
                     meta.append("Retrieved: {}".format(text(candidate.get("retrieved_at"))))
-                if candidate_id:
-                    meta.append("ID: {}".format(candidate_id))
-                meta.append("File: {}".format(file_name))
                 st.markdown('<div class="discovery-meta"><strong>Source:</strong> {}<br>{}</div>'.format(
                     html.escape(source), "<br>".join(html.escape(item) for item in meta)
                 ), unsafe_allow_html=True)
-                matched_terms = candidate.get("matched_terms", [])
-                if matched_terms:
-                    st.markdown("**Matched terms:** {}".format(", ".join(text(term) for term in matched_terms)))
-                match_note = text(candidate.get("match_note"))
-                if match_note:
-                    st.info(match_note)
+                if text(candidate.get("source_use")):
+                    st.write(text(candidate.get("source_use")))
+                related_records = candidate.get("related_records", [])
+                if related_records:
+                    st.caption("Linked records: {}".format(" · ".join(text(record) for record in related_records)))
                 excerpt = text(candidate.get("text_excerpt"))
                 if excerpt:
                     st.markdown('<div class="discovery-excerpt">{}</div>'.format(html.escape(excerpt)), unsafe_allow_html=True)

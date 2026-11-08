@@ -1,11 +1,12 @@
-# Public-source collector
+# Source collector
 
-Run `python -m scraper` from the project root. By default it queries SEC EDGAR for the phrases `Allianz Suisse`, `Allianz Global Investors` and `Structured Alpha`, then fetches a fixed set of public source pages and documents. It writes one JSONL file and a separate JSON status report to `data/discovery/`.
+Run `python -m scraper` from the project root. The collector reads the named source register in `data/dossier.json`, downloads those record-specific pages or documents, and extracts a short passage tied to each linked finding. It removes page navigation and comment sections before extracting text.
 
-```bash
-python -m scraper
-```
+The collector writes:
 
-Options include `--start-date`, `--end-date`, `--limit-per-term`, `--pause` and `--output-dir`. SEC full-text search and source pages can return incomplete results or reject automated requests. Each run records HTTP status or the error for each source. A source that could not be reached is not represented as having no results.
+- `data/discovery/source_snapshots.jsonl`: publisher, title, entity, related finding, text excerpt, retrieval time, extracted length and SHA-256 document hash.
+- `data/discovery/run_status_latest.json`: HTTP status, extraction result and snapshot count for each source.
 
-Every JSONL entry is marked `candidate_unreviewed`. SEC EDGAR returns filing metadata and links; the collector does not claim that it extracted the phrase context from the filing itself. The collector does not classify misconduct, infer corporate relationships from name matches, or modify `data/dossier.json`.
+Generic search indexes are listed as skipped until a specific record is selected. If a source has an equivalent official fallback document URL, the collector tries it when the primary URL fails and records which route supplied the snapshot. Alternate index links remain available in the dashboard for browser access and are not treated as the source document. A source that denies automated access is marked `blocked`. Automated-access interstitial pages are marked `access_challenge`; their page text is not saved as evidence. Excerpts must match terms from the linked finding, so unrelated page recommendations are not stored as source snapshots.
+
+Requests use an eight-second connect timeout, a 25-second read timeout, a one-second delay and a 20 MB download limit. PDF text extraction uses `pypdf`.

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Selected Allianz public records, 2014 to 2025</title>
+  <desc id="desc">A timeline of reported Swiss insurance cases and official U.S., Luxembourg, and Australian enforcement outcomes.</desc>
+  <rect width="1200" height="900" fill="#f3f6f8"/>
+  <text x="64" y="72" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0758a5" letter-spacing="2">SELECTED PUBLIC RECORD</text>
+  <text x="64" y="122" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#142536">A timeline, 2014–2025</text>
+  <line x1="262" y1="162" x2="262" y2="827" stroke="#b9c7d4" stroke-width="4"/>
+
+  <g font-family="Arial, sans-serif">
+    <circle cx="262" cy="204" r="9" fill="#0758a5"/>
+    <text x="64" y="212" font-size="23" font-weight="700" fill="#142536">2014</text>
+    <rect x="292" y="171" width="844" height="66" rx="8" fill="#ffffff" stroke="#ccd6df"/>
+    <text x="316" y="198" font-size="21" font-weight="700" fill="#142536">Allianz24 application screening</text>
+    <text x="316" y="223" font-size="17" fill="#42566a">SRF reported an incorrect credit assessment; Allianz Suisse apologized.</text>
+
+    <circle cx="262" cy="296" r="9" fill="#0758a5"/>
+    <text x="64" y="304" font-size="23" font-weight="700" fill="#142536">2014–20</text>
+    <rect x="292" y="263" width="844" height="66" rx="8" fill="#ffffff" stroke="#ccd6df"/>
+    <text x="316" y="290" font-size="21" font-weight="700" fill="#142536">Structured Alpha fund scheme</text>
+    <text x="316" y="315" font-size="17" fill="#42566a">DOJ case against Allianz Global Investors U.S. LLC.</text>
+
+    <circle cx="262" cy="388" r="9" fill="#805300"/>
+    <text x="64" y="396" font-size="23" font-weight="700" fill="#142536">2022–25</text>
+    <rect x="292" y="355" width="844" height="66" rx="8" fill="#fff8e7" stroke="#e7c982"/>
+    <text x="316" y="382" font-size="21" font-weight="700" fill="#142536">€283,000 AML/CFT administrative fine</text>
+    <text x="316" y="407" font-size="17" fill="#42566a">CSSF fine against the Luxembourg Branch; court confirmed it in 2025.</text>
+
+    <circle cx="262" cy="480" r="9" fill="#805300"/>
+    <text x="64" y="488" font-size="20" font-weight="700" fill="#142536">DEC 2022–23</text>
+    <rect x="292" y="447" width="844" height="66" rx="8" fill="#fff8e7" stroke="#e7c982"/>
+    <text x="316" y="474" font-size="21" font-weight="700" fill="#142536">Zurich life-application reporting</text>
+    <text x="316" y="499" font-size="17" fill="#42566a">Inside Paradeplatz reported incomplete applications and an Allianz Suisse review.</text>
+
+    <circle cx="262" cy="572" r="9" fill="#0758a5"/>
+    <text x="64" y="580" font-size="23" font-weight="700" fill="#142536">2023</text>
+    <rect x="292" y="539" width="844" height="66" rx="8" fill="#ffffff" stroke="#ccd6df"/>
+    <text x="316" y="566" font-size="21" font-weight="700" fill="#142536">AGI U.S. sentenced after guilty plea</text>
+    <text x="316" y="591" font-size="17" fill="#42566a">DOJ: fines, restitution and forfeiture were separate penalties.</text>
+
+    <circle cx="262" cy="664" r="9" fill="#0758a5"/>
+    <text x="64" y="672" font-size="20" font-weight="700" fill="#142536">FEB 2025</text>
+    <rect x="292" y="631" width="844" height="66" rx="8" fill="#ffffff" stroke="#ccd6df"/>
+    <text x="316" y="658" font-size="21" font-weight="700" fill="#142536">Australian travel-insurance convictions</text>
+    <text x="316" y="683" font-size="17" fill="#42566a">NSW Supreme Court: Allianz Australia Insurance and AWP Australia.</text>
+
+    <circle cx="262" cy="756" r="9" fill="#0758a5"/>
+    <text x="64" y="764" font-size="20" font-weight="700" fill="#142536">DEC 2025</text>
+    <rect x="292" y="723" width="844" height="66" rx="8" fill="#ffffff" stroke="#ccd6df"/>
+    <text x="316" y="750" font-size="21" font-weight="700" fill="#142536">SEC final judgments in Structured Alpha</text>
+    <text x="316" y="775" font-size="17" fill="#42566a">Three former Allianz Global Investors U.S. portfolio managers.</text>
+  </g>
+  <text x="64" y="852" font-family="Arial, sans-serif" font-size="15" fill="#42566a">Source links for each entry appear in the article below.</text>
+</svg>

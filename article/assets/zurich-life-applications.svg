@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">Figures reported about the Zurich life-insurance applications</title>
+  <desc id="desc">Inside Paradeplatz reported approximately 2,500 applications from one broker and approximately 1,000 incomplete applications.</desc>
+  <rect width="1200" height="430" fill="#f3f6f8"/>
+  <text x="64" y="66" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0758a5" letter-spacing="2">ZURICH · INSIDE PARADEPLATZ REPORT, 15 DECEMBER 2022</text>
+  <text x="64" y="116" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#142536">The reported application count</text>
+
+  <rect x="64" y="156" width="1072" height="180" rx="12" fill="#ffffff" stroke="#b9c7d4" stroke-width="2"/>
+  <text x="108" y="220" font-family="Arial, sans-serif" font-size="52" font-weight="700" fill="#142536">≈2,500</text>
+  <text x="108" y="258" font-family="Arial, sans-serif" font-size="20" fill="#42566a">life-insurance applications from one broker</text>
+  <line x1="600" y1="184" x2="600" y2="302" stroke="#d2dbe3" stroke-width="2"/>
+  <text x="656" y="220" font-family="Arial, sans-serif" font-size="52" font-weight="700" fill="#805300">≈1,000</text>
+  <text x="656" y="258" font-family="Arial, sans-serif" font-size="20" fill="#42566a">reported as incomplete</text>
+  <rect x="108" y="286" width="945" height="14" rx="7" fill="#e5ebf0"/>
+  <rect x="108" y="286" width="378" height="14" rx="7" fill="#c38b20"/>
+  <text x="64" y="384" font-family="Arial, sans-serif" font-size="16" fill="#42566a">Source: Inside Paradeplatz, 15 December 2022. The outlet reported both figures as approximate.</text>
+</svg>
