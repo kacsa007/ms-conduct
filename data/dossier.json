@@ -229,100 +229,141 @@
   ],
   "research_steps": [
     {
-      "name": "FINMA enforcement and court databases",
-      "status": "Database reviewed",
+      "name": "Structured Alpha securities-fraud case",
+      "status": "Core criminal and SEC outcomes reviewed",
+      "coverage": "DOJ sentencing and charging material, Allianz’s statement, and SEC final judgments against three former portfolio managers.",
+      "result": "The dossier records the AGI U.S. guilty plea and 2023 sentence, the SEC’s 2025 judgments, and the amounts reported by the respective authorities.",
+      "source_ids": [
+        "doj-structured",
+        "doj-structured-information",
+        "allianz-structured-response",
+        "sec-manager-judgments"
+      ],
+      "next_action": "Resolve any further DOJ or SEC entity-specific matters before adding them; the SEC EDGAR search is not yet a systematic review."
+    },
+    {
+      "name": "Allianz Australia travel-insurance convictions",
+      "status": "One named court outcome reviewed",
+      "coverage": "ASIC’s official release on Allianz Australia Insurance Limited and AWP Australia Pty Ltd.",
+      "result": "The dossier records the February 2025 convictions and company-specific fines reported by ASIC.",
+      "source_ids": [
+        "asic-travel"
+      ],
+      "next_action": "Check for additional named ASIC proceedings involving the relevant Allianz entities."
+    },
+    {
+      "name": "CSSF Luxembourg AML sanction",
+      "status": "One named sanction reviewed",
+      "coverage": "CSSF’s sanction record for Allianz Global Investors GmbH, Zweigniederlassung Luxembourg, including the 2025 appeal outcome.",
+      "result": "The dossier records the EUR 283,000 sanction and the Administrative Court confirmation. This is a Luxembourg asset-management branch matter.",
+      "source_ids": [
+        "cssf-lux",
+        "cssf-lux-html"
+      ],
+      "next_action": "Check CSSF records for other named Allianz entities or proceedings before treating this as the full Luxembourg search."
+    },
+    {
+      "name": "Historical Swiss front-running report, 2000–2001",
+      "status": "Source verification open",
+      "coverage": "The supplied plan cites a Swissinfo report about a former Allianz employee and Zurich court convictions.",
+      "result": "The prior collector candidate resolved to unrelated content, so this item is not included as a dossier finding pending a correct source and outcome check.",
+      "source_ids": [],
+      "next_action": "Locate the correct Swissinfo report and corroborate the court outcome, the employee’s stated affiliation, and the report that Allianz was the victim."
+    },
+    {
+      "name": "Zurich life-insurance application reporting and outcome",
+      "status": "Reporting collected; public outcome search open",
+      "coverage": "Inside Paradeplatz reports from December 2022 and January 2023 about incomplete applications, the reported internal review, and follow-up claims.",
+      "result": "The current dossier identifies the application counts and management-knowledge claims as reporting, not independently verified facts. No public final outcome of Allianz Suisse’s internal review is recorded.",
+      "source_ids": [
+        "ip-applications",
+        "ip-followup-dec19",
+        "ip-followup"
+      ],
+      "next_action": "Check official company, regulator and court records for a published outcome or later documented proceeding."
+    },
+    {
+      "name": "FINMA enforcement records",
+      "status": "Database pages collected; case-level audit in progress",
       "coverage": "FINMA enforcement reporting and its anonymised insurance-law court-decision database.",
-      "result": "FINMA publishes anonymised enforcement and insurance-law court records.",
+      "result": "The current sources explain the databases. No unidentified anonymised record has been attributed to Allianz Suisse.",
       "source_ids": [
         "finma-enforcement",
         "finma-insurance-cases"
       ],
-      "next_action": "Use case facts to match any relevant anonymised record before attribution."
+      "next_action": "Compare case facts and dates against candidate decisions; do not attribute an anonymised record without a reliable match."
     },
     {
-      "name": "SEC EDGAR and securities-fraud matters",
-      "status": "Structured Alpha records reviewed",
-      "coverage": "SEC enforcement records and the SEC's final judgments against three former Allianz portfolio managers.",
-      "result": "The SEC published final judgments in the Structured Alpha case on 5 December 2025. The collector now uses named case documents instead of broad EDGAR name-match batches.",
+      "name": "SEC EDGAR search",
+      "status": "Structured Alpha records reviewed; broader search open",
+      "coverage": "SEC final judgments in Structured Alpha and the EDGAR full-text search entry point.",
+      "result": "Specific Structured Alpha records are in the dossier. The broad EDGAR name search has not been completed.",
       "source_ids": [
         "sec-manager-judgments",
         "sec-edgar"
       ],
-      "next_action": "Select record-specific filings before expanding the EDGAR search."
+      "next_action": "Select entity- and matter-specific filings before adding any further records."
     },
     {
-      "name": "U.S. Department of Justice",
-      "status": "Reviewed",
-      "coverage": "DOJ charging and sentencing material for Structured Alpha.",
-      "result": "AGI U.S. pleaded guilty to securities fraud and was sentenced in 2023. DOJ publishes the sentencing release and the case Information.",
+      "name": "DOJ corporate proceedings",
+      "status": "Structured Alpha reviewed; broader search open",
+      "coverage": "DOJ charging and sentencing records for AGI U.S. in Structured Alpha.",
+      "result": "The current dossier contains the guilty plea and sentencing material for this case; it does not establish that all DOJ proceedings involving Allianz entities have been searched.",
       "source_ids": [
         "doj-structured",
         "doj-structured-information"
-      ]
+      ],
+      "next_action": "Check for other named Allianz-entity prosecutions and add only record-specific primary sources."
     },
     {
-      "name": "ASIC Australia",
-      "status": "Reviewed",
-      "coverage": "ASIC's official release and court outcome for Allianz Australia and AWP.",
-      "result": "The NSW Supreme Court convicted both companies in February 2025 over misleading travel-insurance web disclosures and imposed AUD 16.8 million in combined criminal fines.",
-      "source_ids": [
-        "asic-travel"
-      ]
+      "name": "Allianz directors’ dealings and executive disclosures",
+      "status": "Record-level review in progress",
+      "coverage": "Official dealings notices, shareholding disclosures, transaction dates, executive departures and prior positions requested in the plan.",
+      "result": "No transaction-level or person-level result is currently included in the dossier.",
+      "source_ids": [],
+      "next_action": "Extract named official disclosures and verify each person, transaction, date and role. Do not treat transaction timing alone as evidence of misconduct."
     },
     {
-      "name": "CSSF Luxembourg",
-      "status": "Reviewed",
-      "coverage": "CSSF's named sanction document, including the appeal outcome.",
-      "result": "The CSSF imposed a EUR 283,000 AML/CFT fine on Allianz Global Investors GmbH, Zweigniederlassung Luxembourg. The Administrative Court confirmed the sanction in February 2025.",
-      "source_ids": [
-        "cssf-lux"
-      ]
+      "name": "Violation Tracker Global",
+      "status": "Not yet reviewed",
+      "coverage": "The plan names the database as an aggregator for identifying possible penalties and proceedings.",
+      "result": "No Violation Tracker lead has been added to the dossier.",
+      "source_ids": [],
+      "next_action": "Use any entry only as a lead, then verify the underlying penalty or case in the regulator or court record."
     },
     {
-      "name": "Swiss Federal Supreme Court and court records",
-      "status": "Selected records reviewed",
-      "coverage": "Official Federal Supreme Court search, a 2016 and a 2024 Allianz Suisse accident-insurance decision, and FINMA's anonymised insurance-law database.",
-      "result": "Selected decisions include 8C_193/2016 and 8C_485/2023 with 8C_510/2023, concerning Allianz Suisse accident-insurance benefits.",
+      "name": "Swiss Federal Supreme Court and claims-handling records",
+      "status": "Selected decisions reviewed; 2010–2026 expansion open",
+      "coverage": "Official Federal Supreme Court decisions involving Allianz Suisse and FINMA’s anonymised insurance-law database.",
+      "result": "The dossier includes 8C_193/2016 and 8C_485/2023 with 8C_510/2023. These are individual accident-insurance decisions with different outcomes.",
       "source_ids": [
         "bger-2016-8c193",
         "bger-2024-8c485",
         "finma-insurance-cases"
       ],
-      "next_action": "Expand the search across civil, insurance and criminal decisions for 2010–2026 and record outcomes case by case."
+      "next_action": "Expand across civil, insurance and criminal decisions for 2010–2026 and log each relevant outcome with the exact entity and case number."
     },
     {
-      "name": "Allianz annual reports and Allianz Suisse SFCR",
-      "status": "Official reports fetched and text extracted",
-      "coverage": "Allianz Group Annual Report 2025 and Allianz Suisse 2025 report on financial condition.",
-      "result": "The 2025 Group Annual Report describes its Litigation Proceedings and Supervisory Proceedings databases and reports no anti-corruption or anti-bribery convictions or fines for 2024 and 2025. The Allianz Suisse SFCR was also fetched.",
+      "name": "Allianz 2025 Annual Report and Allianz Suisse SFCR",
+      "status": "Official reports fetched; selected disclosures reviewed",
+      "coverage": "Allianz Group Annual Report 2025 and Allianz Suisse Report on the Financial Condition 2025.",
+      "result": "The dossier records the Group report’s supervisory-proceedings database description and anti-corruption table, plus the Swiss report’s entity, governance and risk disclosures.",
       "source_ids": [
         "allianz-ar-2025",
         "allianz-sfcr-2025"
       ],
-      "next_action": "Use the report disclosures as company statements, alongside primary case records."
+      "next_action": "Use report disclosures as company statements and cross-check any named matter against primary case records."
     },
     {
-      "name": "Swiss whistleblower and claims-handling reporting",
-      "status": "Reporting and company statements collected",
-      "coverage": "Inside Paradeplatz reporting on the Zurich life applications case, SRF reporting on Allianz24 screening and a selected Federal Supreme Court case.",
-      "result": "Inside Paradeplatz reported the Zurich life-application case and quoted Allianz Suisse statements on its review, the broker relationship and money laundering. SRF reported an Allianz24 application rejection and Allianz Suisse’s apology for an error.",
+      "name": "Swiss credit screening, personal data and HIS",
+      "status": "One reported incident and current policy reviewed; case search open",
+      "coverage": "SRF’s 2014 Allianz24 report and Allianz Suisse’s current HIS disclosure.",
+      "result": "SRF reported one apparent credit-check error and Allianz’s apology. Allianz’s current policy describes HIS entry grounds, access and correction routes, and deletion timing; the policy is not evidence of how a disputed individual entry was handled.",
       "source_ids": [
-        "ip-applications",
-        "ip-followup",
         "srf-credit-screening",
-        "bger-2024-8c485",
-        "ip-followup-dec19"
-      ],
-      "next_action": "Add later official records if located."
-    },
-    {
-      "name": "HIS and personal-data practices",
-      "status": "Company policy fetched",
-      "coverage": "Allianz Suisse's current HIS disclosure.",
-      "result": "Allianz Suisse’s current HIS disclosure describes entry grounds, access and correction routes, and the seven-year deletion period.",
-      "source_ids": [
         "allianz-his"
-      ]
+      ],
+      "next_action": "Search for specific court, regulator or documented customer records about claims handling, inaccurate allegations of fraud and personal-data processing."
     }
   ],
   "sources": [

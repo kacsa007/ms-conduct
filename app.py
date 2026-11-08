@@ -360,7 +360,7 @@ elif page == "Findings":
 
 elif page == "Research plan":
     st.subheader("Research plan")
-    st.write("Steps from the supplied plan, with coverage, results and outstanding actions.")
+    st.write("Plan items, current coverage and the work still open.")
     for index, step in enumerate(dossier["research_steps"], start=1):
         step_title = "{}. {}  |  {}".format(index, step["name"], step["status"])
         with st.expander(step_title, expanded=index <= 2):
@@ -412,7 +412,7 @@ elif page == "Sources":
 
 else:
     st.subheader("Collected sources")
-    st.write("The collector fetches source URLs already linked to findings and stores a short text excerpt, document hash and access status.")
+    st.write("The collector is an on-demand, one-shot job. It fetches named source URLs already linked to findings and stores a short excerpt, document hash and access status. It does not discover new URLs or run on a schedule.")
     candidates, discovery_errors, discovery_files = load_discovery_candidates()
     latest_status, status_errors = load_latest_run_status()
     if discovery_errors:
@@ -422,6 +422,13 @@ else:
         st.warning("Could not read crawl status {}".format(error))
 
     if latest_status:
+        st.caption(
+            "Latest run: {} · {} listed sources · {} saved snapshots".format(
+                latest_status.get("retrieved_at", "unknown"),
+                latest_status.get("source_count", 0),
+                latest_status.get("snapshot_count", 0),
+            )
+        )
         status_labels = {
             "fetched": "Fetched",
             "fetched_alternate": "Fetched official fallback",

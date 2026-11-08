@@ -1,6 +1,6 @@
 # Source collector
 
-Run `python -m scraper` from the project root. The collector reads the named source register in `data/dossier.json`, downloads those record-specific pages or documents, and extracts a short passage tied to each linked finding. It removes page navigation and comment sections before extracting text.
+Run `python -m scraper` from the project root to start one on-demand crawl. The collector reads the named source register in `data/dossier.json`, downloads those record-specific pages or documents, and extracts a short passage tied to each linked finding. It does not discover URLs or run on a schedule. Add a verified source to the register before the next crawl. It removes page navigation and comment sections before extracting text.
 
 The collector writes:
 
