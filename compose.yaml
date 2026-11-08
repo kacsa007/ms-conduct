@@ -1,0 +1,19 @@
+services:
+  dashboard:
+    build: .
+    image: ms-conduct:local
+    ports:
+      - "127.0.0.1:8501:8501"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+
+  scraper:
+    build: .
+    image: ms-conduct:local
+    profiles:
+      - scrape
+    volumes:
+      - ./data:/app/data
+    entrypoint: ["python", "-m", "scraper"]
+    restart: "no"

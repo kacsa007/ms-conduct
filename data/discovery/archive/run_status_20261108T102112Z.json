@@ -1,0 +1,116 @@
+{
+  "run_id": "20261108T102112Z",
+  "retrieved_at": "2026-11-08T10:20:57+00:00",
+  "terms": [
+    "Allianz Suisse",
+    "Allianz Global Investors",
+    "Allianz"
+  ],
+  "window": {
+    "start": "2010-01-01",
+    "end": "2026-11-08"
+  },
+  "candidate_count": 81,
+  "output_file": "discovery_20261108T102112Z.jsonl",
+  "evidence_note": "Every item is an unreviewed discovery lead. A match or excerpt is not a finding; verify the source and entity before using it.",
+  "sources": [
+    {
+      "source": "SEC EDGAR EFTS",
+      "status": "ok",
+      "queries": [
+        {
+          "term": "Allianz Suisse",
+          "url": "https://efts.sec.gov/LATEST/search-index?q=%22Allianz+Suisse%22&dateRange=custom&startdt=2010-01-01&enddt=2026-11-08&from=0&size=20",
+          "http_status": 200,
+          "result_count": 30
+        },
+        {
+          "term": "Allianz Global Investors",
+          "url": "https://efts.sec.gov/LATEST/search-index?q=%22Allianz+Global+Investors%22&dateRange=custom&startdt=2010-01-01&enddt=2026-11-08&from=0&size=20",
+          "http_status": 200,
+          "result_count": 100
+        },
+        {
+          "term": "Allianz",
+          "url": "https://efts.sec.gov/LATEST/search-index?q=%22Allianz%22&dateRange=custom&startdt=2010-01-01&enddt=2026-11-08&from=0&size=20",
+          "http_status": 200,
+          "result_count": 100
+        }
+      ]
+    },
+    {
+      "source": "ASIC",
+      "url": "https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2025-releases/25-028mr-allianz-and-awp-convicted-and-fined-168-million-for-making-false-or-misleading-statements",
+      "status": "ok",
+      "http_status": 200,
+      "title": "25-028MR Allianz and AWP convicted and fined $16.8 million for making false or misleading statements | ASIC",
+      "matched_terms": [
+        "Allianz"
+      ],
+      "excerpt_chars": 701
+    },
+    {
+      "source": "CSSF",
+      "url": "https://www.cssf.lu/wp-content/uploads/S_88_GFI_Allianz_Global_Investors_GmbH_Zweigniederlassung_Luxembourg_2022.03.25_en.pdf",
+      "status": "ok",
+      "http_status": 200,
+      "title": "CSSF administrative sanction for AML/CFT deficiencies",
+      "matched_terms": [
+        "Allianz Global Investors",
+        "Allianz"
+      ],
+      "excerpt_chars": 702
+    },
+    {
+      "source": "DOJ",
+      "url": "https://www.justice.gov/usao-sdny/pr/allianz-global-investors-us-sentenced-connection-multibillion-dollar-fraud-scheme",
+      "status": "ok",
+      "http_status": 200,
+      "title": "DOJ Structured Alpha sentencing release",
+      "matched_terms": [],
+      "excerpt_chars": 0
+    },
+    {
+      "source": "FINMA",
+      "url": "https://www.finma.ch/en/documentation/enforcement-reporting/",
+      "status": "ok",
+      "http_status": 200,
+      "title": "Enforcement reporting | FINMA",
+      "matched_terms": [],
+      "excerpt_chars": 701
+    },
+    {
+      "source": "Swiss Federal Supreme Court",
+      "url": "https://search.bger.ch/ext/eurospider/live/de/php/aza/http/index.php?azaclir=aza&query_words=%22Allianz+Suisse%22&from_date=2010-01-01&to_date=2026-11-08&sort=relevance&rank=0&top_subcollection_aza=all&type=simple_query",
+      "status": "ok",
+      "http_status": 200,
+      "title": "Eurospider Suche: \"Allianz Suisse\"",
+      "matched_terms": [
+        "Allianz Suisse",
+        "Allianz"
+      ],
+      "excerpt_chars": 701
+    },
+    {
+      "source": "Allianz Suisse",
+      "url": "https://www.allianz.ch/de/informationen/his.html",
+      "status": "error",
+      "http_status": 403,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.allianz.ch/de/informationen/his.html"
+    },
+    {
+      "source": "Allianz SE",
+      "url": "https://www.allianz.com/content/dam/onemarketing/azcom/Allianz_com/investor-relations/en/results-reports/annual-report/ar-2025/en-allianz-group-annual-report-2025.pdf",
+      "status": "error",
+      "http_status": 403,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.allianz.com/content/dam/onemarketing/azcom/Allianz_com/investor-relations/en/results-reports/annual-report/ar-2025/en-allianz-group-annual-report-2025.pdf"
+    },
+    {
+      "source": "Allianz Suisse",
+      "url": "https://www.allianz.ch/content/dam/onemarketing/azch/common/allianz/de/medienberichte/Bericht_%C3%BCber_die_Finanzlage_ASV_2025.pdf",
+      "status": "error",
+      "http_status": 403,
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.allianz.ch/content/dam/onemarketing/azch/common/allianz/de/medienberichte/Bericht_%C3%BCber_die_Finanzlage_ASV_2025.pdf"
+    }
+  ]
+}

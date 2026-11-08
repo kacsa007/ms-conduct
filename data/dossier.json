@@ -83,12 +83,13 @@
       "geography": "Switzerland",
       "title": "Former Allianz asset manager convicted in a Zurich front-running case",
       "entity": "Former Allianz Asset Management portfolio manager and two associates",
-      "summary": "SWI swissinfo.ch reported that a former portfolio manager passed advance knowledge of Allianz stock orders to associates, who traded before the orders. The report says the participants were convicted in Zurich.",
+      "summary": "SWI swissinfo.ch reported that a former portfolio manager passed advance knowledge of Allianz stock orders to associates, who traded before the orders. It reported first-instance convictions for the two defendants who went to trial.",
       "details": [
         "The reported transactions took place from November 2000 to April 2001.",
+        "SWI said the convictions were not yet legally final when it published the report. Later appeal status has not been verified here.",
         "SWI describes Allianz as the victim of the scheme, not its beneficiary."
       ],
-      "scope_note": "Historical employee-level conduct reported by a news service. It is not evidence of an Allianz policy or institutional market manipulation by Allianz.",
+      "scope_note": "Historical employee-level conduct reported by a news service, with final appeal status unverified. It is not evidence of an Allianz policy or institutional market manipulation by Allianz.",
       "source_ids": ["swissinfo-front-running"],
       "tags": ["Historical", "Allianz described as victim"]
     },
@@ -158,11 +159,30 @@
       "summary": "Allianz says an HIS entry alone cannot justify refusing a claim. Its disclosure lists the grounds for an entry, individual access and correction routes, and automatic deletion seven years after the loss date.",
       "details": [
         "The company says entries can be challenged if the legal grounds are absent or the data are incorrect.",
-        "The policy also describes data shared with the HIS operator and the system's role in claim review."
+        "The policy also describes data shared with the HIS operator and the system's role in claim review.",
+        "The Federal Data Protection and Information Commissioner says it advised the Swiss Insurance Association on the HIS rollout and emphasized proportionality in related data processing. This was system-design advice, not an enforcement finding against Allianz."
       ],
       "scope_note": "This is Allianz's published policy statement. It describes the company's stated process and rights; it is not an independent audit of how any individual claim was handled.",
-      "source_ids": ["allianz-his"],
+      "source_ids": ["allianz-his", "edoeb-his-advice"],
       "tags": ["Privacy", "Company policy"]
+    },
+    {
+      "id": "swiss-court-benefit-revision",
+      "sort_date": "2016-10-26",
+      "date_label": "Federal Supreme Court judgment 26 October 2016",
+      "category": "Claims handling and benefit revision",
+      "evidence_class": "Court decision",
+      "geography": "Switzerland",
+      "title": "Federal Supreme Court upheld Allianz Suisse's withdrawal of previously awarded accident benefits",
+      "entity": "Allianz Suisse Versicherungs-Gesellschaft AG · case 8C_193/2016",
+      "summary": "After Allianz had taken over the case from SUVA and paid benefits retroactively, it later withdrew the award after receiving documents from the at-fault driver's liability insurer. The Federal Supreme Court allowed Allianz's appeal and confirmed its denial.",
+      "details": [
+        "The claimant had earlier received an invalidity pension and other benefits under decisions issued by SUVA and then Allianz.",
+        "The Court's 2016 judgment reversed the cantonal judgment that had ordered Allianz to continue payments."
+      ],
+      "scope_note": "A specific primary-source case in which the court upheld Allianz's decision. Read alongside other outcomes, it is not evidence for or against a general claims-handling pattern.",
+      "source_ids": ["bger-2016-8c193"],
+      "tags": ["Claims handling", "Individual case"]
     },
     {
       "id": "annual-report-disclosure",
@@ -240,9 +260,9 @@
     {
       "name": "Swiss Federal Supreme Court and court records",
       "status": "Selected records reviewed",
-      "coverage": "Official Federal Supreme Court search and a 2024 judgment naming Allianz Suisse in an accident-insurance dispute.",
-      "result": "In cases 8C_485/2023 and 8C_510/2023, the Federal Supreme Court set aside the prior decision and held that Allianz Suisse owed benefits in that individual case.",
-      "source_ids": ["bger-2024-8c485", "finma-insurance-cases"],
+      "coverage": "Official Federal Supreme Court search, a 2016 and a 2024 Allianz Suisse accident-insurance decision, and FINMA's anonymised insurance-law database.",
+      "result": "Two selected cases have different outcomes: the Court upheld Allianz's benefit withdrawal in 8C_193/2016, then held Allianz Suisse owed benefits in the 2020 injury case 8C_485/2023 and 8C_510/2023. This is not a systematic review of all litigation.",
+      "source_ids": ["bger-2016-8c193", "bger-2024-8c485", "finma-insurance-cases"],
       "next_action": "Expand the search across civil, insurance and criminal decisions for 2010–2026 and record outcomes case by case."
     },
     {
@@ -265,8 +285,8 @@
       "name": "HIS and personal-data practices",
       "status": "Official policy reviewed",
       "coverage": "Allianz Suisse's current HIS disclosure.",
-      "result": "Allianz states that a HIS entry alone cannot justify denying benefits, describes correction and deletion rights, and says entries are automatically deleted seven years after the loss date.",
-      "source_ids": ["allianz-his"],
+      "result": "Allianz states that a HIS entry alone cannot justify denying benefits, describes correction and deletion rights, and says entries are automatically deleted seven years after the loss date. The Federal Data Protection and Information Commissioner says it advised on the industry's HIS design and emphasized proportionality; it does not report an enforcement finding against Allianz.",
+      "source_ids": ["allianz-his", "edoeb-his-advice"],
       "next_action": "Compare the published rules with the data and reasoning in the user's own case before drawing any case-specific conclusion."
     }
   ],
@@ -352,12 +372,28 @@
       "use": "Published HIS grounds, claim-use limits, access rights, correction routes and seven-year deletion rule."
     },
     {
+      "id": "edoeb-his-advice",
+      "publisher": "Federal Data Protection and Information Commissioner",
+      "title": "28th Activity Report 2020/21, section on the Swiss insurance HIS",
+      "url": "https://www.edoeb.admin.ch/dam/de/sd-web/L9FgvHiQ8VkI/28_Taetigkeitsbericht_2020-2021_DE.pdf",
+      "source_type": "Primary · data protection authority report",
+      "use": "The FDPIC says it advised the Swiss Insurance Association during HIS development and emphasized data-processing proportionality."
+    },
+    {
       "id": "bger-2024-8c485",
       "publisher": "Swiss Federal Supreme Court",
       "title": "Judgments 8C_485/2023 and 8C_510/2023, 19 June 2024",
       "url": "https://www.bger.ch/ext/eurospider/live/fr/php/aza/http/index.php?docid=2021-02-03-8C_581-2020&from_date=&highlight_docid=2024-06-19-8C_485-2023&lang=fr&number_of_ranks=2186&page=5&rank=42&to_date=&top_subcollection_aza=all&type=highlight_simple_similar_documents",
       "source_type": "Primary · court judgment",
       "use": "Specific accident-insurance case where the Court held Allianz Suisse owed benefits."
+    },
+    {
+      "id": "bger-2016-8c193",
+      "publisher": "Swiss Federal Supreme Court",
+      "title": "Judgment 8C_193/2016, 26 October 2016",
+      "url": "https://relevancy.bger.ch/php/aza/http/index.php?docid=aza%3A%2F%2F26-10-2016-8C_193-2016&from_date=&insertion_date=&lang=fr&sort=relevance&type=simple_similar_documents&zoom=YES",
+      "source_type": "Primary · court judgment",
+      "use": "Specific accident-insurance case where the Court upheld Allianz's denial after withdrawal of prior benefits."
     },
     {
       "id": "finma-enforcement",
