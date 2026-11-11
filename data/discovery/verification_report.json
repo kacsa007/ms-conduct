@@ -1,0 +1,742 @@
+{
+  "generated_at": "2026-11-11T11:52:54+00:00",
+  "summary": {
+    "records": 10,
+    "records_supported": 2,
+    "records_with_warnings": 6,
+    "records_high_priority": 4,
+    "leads": 0,
+    "sources_linked": 16,
+    "sources_collected": 10,
+    "sources_missing": 6,
+    "integrity": {
+      "total": 1,
+      "errors": 0,
+      "warnings": 0,
+      "infos": 1,
+      "ok": true
+    },
+    "status_counts": {
+      "source_not_collected": 3,
+      "supported_by_primary_source": 2,
+      "not_reflected_as_outcome": 1,
+      "allegation_reported": 2,
+      "disclosure_only": 2
+    },
+    "priority_counts": {
+      "high": 4,
+      "medium": 2,
+      "low": 4
+    }
+  },
+  "integrity": {
+    "summary": {
+      "total": 1,
+      "errors": 0,
+      "warnings": 0,
+      "infos": 1,
+      "ok": true
+    },
+    "issues": [
+      {
+        "severity": "info",
+        "code": "date_label_year_mismatch",
+        "scope": "record",
+        "message": "sort_date year 2026 does not appear in date_label.",
+        "ref": "annual-report-disclosure"
+      }
+    ]
+  },
+  "missing_source_ids": [
+    "allianz-structured-response",
+    "bger-2016-8c193",
+    "bger-2024-8c485",
+    "cssf-lux-html",
+    "doj-structured",
+    "doj-structured-information"
+  ],
+  "records": [
+    {
+      "record_id": "structured-alpha-criminal",
+      "title": "Structured Alpha funds: AGI U.S. pleaded guilty to securities fraud",
+      "entity": "Allianz Global Investors U.S. LLC",
+      "evidence_class": "Regulatory or criminal outcome",
+      "geography": "United States",
+      "linked_source_ids": [
+        "doj-structured",
+        "allianz-structured-response",
+        "doj-structured-information"
+      ],
+      "collected_source_ids": [],
+      "missing_source_ids": [
+        "doj-structured",
+        "allianz-structured-response",
+        "doj-structured-information"
+      ],
+      "status": "source_not_collected",
+      "status_label": "Source not collected",
+      "priority": "high",
+      "priority_score": 3,
+      "flags": [
+        {
+          "severity": "warning",
+          "code": "missing_snapshot",
+          "message": "No collected snapshot exists for the linked source(s)."
+        }
+      ],
+      "entity_mentioned": false,
+      "signal_summary": {
+        "signals": [],
+        "categories_asserted": [],
+        "categories_alleged": [],
+        "has_outcome": false,
+        "has_allegation": false,
+        "has_exonerating": false,
+        "severity_score": 0.0,
+        "verification_status": "no_signal"
+      },
+      "sources": []
+    },
+    {
+      "record_id": "structured-alpha-managers",
+      "title": "SEC obtained final judgments against three former portfolio managers",
+      "entity": "Gregoire Tournant, Trevor Taylor and Stephen Bond-Nelson",
+      "evidence_class": "Regulatory or criminal outcome",
+      "geography": "United States",
+      "linked_source_ids": [
+        "sec-manager-judgments"
+      ],
+      "collected_source_ids": [
+        "sec-manager-judgments"
+      ],
+      "missing_source_ids": [],
+      "status": "supported_by_primary_source",
+      "status_label": "Supported by a primary outcome",
+      "priority": "low",
+      "priority_score": 1,
+      "flags": [],
+      "entity_mentioned": true,
+      "signal_summary": {
+        "signals": [
+          {
+            "category": "fraud",
+            "label": "Fraud or deception",
+            "kind": "misconduct",
+            "weight": 5,
+            "polarity": "asserted",
+            "snippet": "Bond-Nelson (Bond-Nelson) with a massive fraudulent scheme that concealed the significant downside risks of a complex options trading strategy called \"Structured Alpha.\"",
+            "match": "fraudulent"
+          },
+          {
+            "category": "misleading",
+            "label": "Misleading statements",
+            "kind": "misconduct",
+            "weight": 4,
+            "polarity": "asserted",
+            "snippet": "Bond-Nelson (Bond-Nelson) with a massive fraudulent scheme that concealed the significant downside risks of a complex options trading strategy called \"Structured Alpha.\"",
+            "match": "concealed"
+          },
+          {
+            "category": "civil_judgment",
+            "label": "Civil judgment",
+            "kind": "outcome",
+            "weight": 3,
+            "polarity": "asserted",
+            "snippet": "SEC Obtains Final Judgments Against Three Allianz Portfolio Managers On November 26, 2025, the Securities and Exchange Commission (SEC) obtained final judgments against three former senior portfolio managers at Allianz Global Investors U.S.",
+            "match": "Final Judgments"
+          }
+        ],
+        "categories_asserted": [
+          "civil_judgment",
+          "fraud",
+          "misleading"
+        ],
+        "categories_alleged": [],
+        "has_outcome": true,
+        "has_allegation": false,
+        "has_exonerating": false,
+        "severity_score": 10.0,
+        "verification_status": "primary_outcome"
+      },
+      "sources": [
+        {
+          "source_id": "sec-manager-judgments",
+          "source": "U.S. Securities and Exchange Commission",
+          "title": "SEC.gov | Gregoire P. Tournant; Trevor L. Taylor; Stephen G. Bond-Nelson",
+          "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26432",
+          "source_type": "Primary · SEC litigation release",
+          "retrieved_at": "2026-11-08T11:29:03+00:00",
+          "verification_status": "primary_outcome",
+          "severity_score": 10.0,
+          "categories_asserted": [
+            "civil_judgment",
+            "fraud",
+            "misleading"
+          ],
+          "categories_alleged": [],
+          "excerpt": "SEC Obtains Final Judgments Against Three Allianz Portfolio Managers On November 26, 2025, the Securities and Exchange Commission (SEC) obtained final judgments against three former senior portfolio managers at Allianz Global Investors U.S. The SEC previously charged Gregoire P. Bond-Nelson (Bond-Nelson) with a massive fraudulent scheme that concealed the significant downside risks of a complex options trading strategy called \"Structured Alpha.\""
+        }
+      ]
+    },
+    {
+      "record_id": "asic-travel-insurance",
+      "title": "Allianz Australia and AWP convicted over travel-insurance statements",
+      "entity": "Allianz Australia Insurance Limited and AWP Australia Pty Ltd",
+      "evidence_class": "Regulatory or criminal outcome",
+      "geography": "Australia",
+      "linked_source_ids": [
+        "asic-travel"
+      ],
+      "collected_source_ids": [
+        "asic-travel"
+      ],
+      "missing_source_ids": [],
+      "status": "supported_by_primary_source",
+      "status_label": "Supported by a primary outcome",
+      "priority": "low",
+      "priority_score": 1,
+      "flags": [],
+      "entity_mentioned": true,
+      "signal_summary": {
+        "signals": [
+          {
+            "category": "criminal_outcome",
+            "label": "Criminal outcome",
+            "kind": "outcome",
+            "weight": 5,
+            "polarity": "asserted",
+            "snippet": "Allianz Australia Insurance was sentenced for six counts of disseminating information that was false or misleading and AWP was sentenced for one count of disseminating misleading information, contrary to the Corporations Act.",
+            "match": "sentenced"
+          },
+          {
+            "category": "criminal_outcome",
+            "label": "Criminal outcome",
+            "kind": "outcome",
+            "weight": 5,
+            "polarity": "asserted",
+            "snippet": "The Supreme Court of NSW today convicted and imposed criminal fines of $13.5 million against Allianz Australia Insurance Limited and $3.3 million against AWP Australia Pty Ltd for making false or misleading statements.",
+            "match": "convicted"
+          },
+          {
+            "category": "misleading",
+            "label": "Misleading statements",
+            "kind": "misconduct",
+            "weight": 4,
+            "polarity": "asserted",
+            "snippet": "Allianz Australia Insurance was sentenced for six counts of disseminating information that was false or misleading and AWP was sentenced for one count of disseminating misleading information, contrary to the Corporations Act.",
+            "match": "false or misleading"
+          },
+          {
+            "category": "misleading",
+            "label": "Misleading statements",
+            "kind": "misconduct",
+            "weight": 4,
+            "polarity": "asserted",
+            "snippet": "The Court found that between 2016 and 2018, Allianz and AWP published information online, including on Allianz's domestic and international travel insurance web pages, that misrepresented the characteristics or level of coverage of its travel insurance available to consumers.",
+            "match": "misrepresented"
+          },
+          {
+            "category": "misleading",
+            "label": "Misleading statements",
+            "kind": "misconduct",
+            "weight": 4,
+            "polarity": "asserted",
+            "snippet": "The Supreme Court of NSW today convicted and imposed criminal fines of $13.5 million against Allianz Australia Insurance Limited and $3.3 million against AWP Australia Pty Ltd for making false or misleading statements.",
+            "match": "false or misleading"
+          },
+          {
+            "category": "regulatory_outcome",
+            "label": "Regulatory sanction",
+            "kind": "outcome",
+            "weight": 4,
+            "polarity": "asserted",
+            "snippet": "The Supreme Court of NSW today convicted and imposed criminal fines of $13.5 million against Allianz Australia Insurance Limited and $3.3 million against AWP Australia Pty Ltd for making false or misleading statements.",
+            "match": "imposed criminal fines"
+          },
+          {
+            "category": "consumer_harm",
+            "label": "Consumer harm",
+            "kind": "misconduct",
+            "weight": 3,
+            "polarity": "asserted",
+            "snippet": "Allianz Australia Insurance was sentenced for six counts of disseminating information that was false or misleading and AWP was sentenced for one count of disseminating misleading information, contrary to the Corporations Act.",
+            "match": "false or misleading"
+          },
+          {
+            "category": "consumer_harm",
+            "label": "Consumer harm",
+            "kind": "misconduct",
+            "weight": 3,
+            "polarity": "asserted",
+            "snippet": "The Supreme Court of NSW today convicted and imposed criminal fines of $13.5 million against Allianz Australia Insurance Limited and $3.3 million against AWP Australia Pty Ltd for making false or misleading statements.",
+            "match": "false or misleading"
+          },
+          {
+            "category": "court_decision",
+            "label": "Court decision",
+            "kind": "outcome",
+            "weight": 2,
+            "polarity": "asserted",
+            "snippet": "The Court found that between 2016 and 2018, Allianz and AWP published information online, including on Allianz's domestic and international travel insurance web pages, that misrepresented the characteristics or level of coverage of its travel insurance available to consumers.",
+            "match": "Court found"
+          }
+        ],
+        "categories_asserted": [
+          "consumer_harm",
+          "court_decision",
+          "criminal_outcome",
+          "misleading",
+          "regulatory_outcome"
+        ],
+        "categories_alleged": [],
+        "has_outcome": true,
+        "has_allegation": false,
+        "has_exonerating": false,
+        "severity_score": 10.0,
+        "verification_status": "primary_outcome"
+      },
+      "sources": [
+        {
+          "source_id": "asic-travel",
+          "source": "Australian Securities and Investments Commission",
+          "title": "25-028MR Allianz and AWP convicted and fined $16.8 million for making false or misleading statements | ASIC",
+          "url": "https://www.asic.gov.au/about-asic/news-centre/find-a-media-release/2025-releases/25-028mr-allianz-and-awp-convicted-and-fined-168-million-for-making-false-or-misleading-statements",
+          "source_type": "Primary · regulator and court outcome",
+          "retrieved_at": "2026-11-08T11:29:06+00:00",
+          "verification_status": "primary_outcome",
+          "severity_score": 10.0,
+          "categories_asserted": [
+            "consumer_harm",
+            "court_decision",
+            "criminal_outcome",
+            "misleading",
+            "regulatory_outcome"
+          ],
+          "categories_alleged": [],
+          "excerpt": "The Supreme Court of NSW today convicted and imposed criminal fines of $13.5 million against Allianz Australia Insurance Limited and $3.3 million against AWP Australia Pty Ltd for making false or misleading statements. Allianz Australia Insurance was sentenced for six counts of disseminating information that was false or misleading and AWP was sentenced for one count of disseminating misleading information, contrary to the Corporations Act. The Court found that between 2016 and 2018, Allianz and AWP published information online, including on Allianz's domestic and international travel insurance web pages, that misrepresented the characteristics or level of coverage of its travel insurance a…"
+        }
+      ]
+    },
+    {
+      "record_id": "cssf-aml",
+      "title": "CSSF fine for AML/CFT control failures upheld by the Luxembourg Administrative Court",
+      "entity": "Allianz Global Investors GmbH, Zweigniederlassung Luxembourg",
+      "evidence_class": "Regulatory or criminal outcome",
+      "geography": "Luxembourg",
+      "linked_source_ids": [
+        "cssf-lux",
+        "cssf-lux-html"
+      ],
+      "collected_source_ids": [
+        "cssf-lux"
+      ],
+      "missing_source_ids": [
+        "cssf-lux-html"
+      ],
+      "status": "not_reflected_as_outcome",
+      "status_label": "Outcome class not reflected in the excerpt",
+      "priority": "high",
+      "priority_score": 3,
+      "flags": [
+        {
+          "severity": "warning",
+          "code": "outcome_not_in_excerpt",
+          "message": "Collected excerpts describe misconduct but no court or regulator outcome."
+        },
+        {
+          "severity": "info",
+          "code": "partial_source_coverage",
+          "message": "1 of 2 linked source(s) have no collected snapshot."
+        }
+      ],
+      "entity_mentioned": true,
+      "signal_summary": {
+        "signals": [
+          {
+            "category": "money_laundering",
+            "label": "Money laundering or AML gaps",
+            "kind": "misconduct",
+            "weight": 4,
+            "polarity": "asserted",
+            "snippet": "contravening Article 3(2)d) of the AML/CFT, as well as Article 33(1) of CSSF Regulation 12- • Insufficient AML/CFT review cycle by Internal Audit of the Luxembourg Branch's activities at the time of the on-site inspection, in accordance with Article 44(2) of CSSF Regulation 12- 02, which requires a yearly review in terms of AML/CFT.",
+            "match": "AML/CFT"
+          }
+        ],
+        "categories_asserted": [
+          "money_laundering"
+        ],
+        "categories_alleged": [],
+        "has_outcome": false,
+        "has_allegation": true,
+        "has_exonerating": false,
+        "severity_score": 4.0,
+        "verification_status": "asserted_misconduct"
+      },
+      "sources": [
+        {
+          "source_id": "cssf-lux",
+          "source": "Commission de Surveillance du Secteur Financier",
+          "title": "Administrative sanction of 25 March 2022 for AML/CFT non-compliance",
+          "url": "https://www.cssf.lu/wp-content/uploads/S_88_GFI_Allianz_Global_Investors_GmbH_Zweigniederlassung_Luxembourg_2022.03.25_en.pdf",
+          "source_type": "Primary · regulator decision",
+          "retrieved_at": "2026-11-08T11:29:07+00:00",
+          "verification_status": "asserted_misconduct",
+          "severity_score": 4.0,
+          "categories_asserted": [
+            "money_laundering"
+          ],
+          "categories_alleged": [],
+          "excerpt": "contravening Article 3(2)d) of the AML/CFT, as well as Article 33(1) of CSSF Regulation 12- • Insufficient AML/CFT review cycle by Internal Audit of the Luxembourg Branch's activities at the time of the on-site inspection, in accordance with Article 44(2) of CSSF Regulation 12- 02, which requires a yearly review in terms of AML/CFT."
+        }
+      ]
+    },
+    {
+      "record_id": "zurich-life-applications",
+      "title": "Reported gaps in Zurich life-insurance applications",
+      "entity": "Allianz Suisse Zurich general agency and an external broker",
+      "evidence_class": "Reported allegation",
+      "geography": "Switzerland",
+      "linked_source_ids": [
+        "ip-applications",
+        "ip-followup",
+        "ip-followup-dec19"
+      ],
+      "collected_source_ids": [
+        "ip-applications",
+        "ip-followup",
+        "ip-followup-dec19"
+      ],
+      "missing_source_ids": [],
+      "status": "allegation_reported",
+      "status_label": "Reported as an allegation",
+      "priority": "medium",
+      "priority_score": 2,
+      "flags": [],
+      "entity_mentioned": true,
+      "signal_summary": {
+        "signals": [
+          {
+            "category": "compliance_failure",
+            "label": "Control failure",
+            "kind": "control",
+            "weight": 3,
+            "polarity": "asserted",
+            "snippet": "Das Gebaren flog auf, als ein Whistleblower die Praxis der Zürcher Generalagentur der Zentrale der Allianz Suiss",
+            "match": "Whistleblower"
+          }
+        ],
+        "categories_asserted": [
+          "compliance_failure"
+        ],
+        "categories_alleged": [],
+        "has_outcome": false,
+        "has_allegation": true,
+        "has_exonerating": false,
+        "severity_score": 3.0,
+        "verification_status": "reported_allegation"
+      },
+      "sources": [
+        {
+          "source_id": "ip-applications",
+          "source": "Inside Paradeplatz",
+          "title": "Allianz erschüttert von 1’000 Lebens-Anträgen mit Lücken – Inside Paradeplatz",
+          "url": "https://insideparadeplatz.ch/2022/12/15/allianz-erschuettert-von-1000-fake-lebens-antraegen/",
+          "source_type": "Secondary · investigative reporting",
+          "retrieved_at": "2026-11-08T11:29:08+00:00",
+          "verification_status": "reported_allegation",
+          "severity_score": 3.0,
+          "categories_asserted": [
+            "compliance_failure"
+          ],
+          "categories_alleged": [],
+          "excerpt": "ia den Zürcher Generalagenten ins Haus geflattert sind. Der bisherige Erkenntnisstand ist eindrücklich. 1'000 der 2'500 Anträge sind lückenhaft. Auf den Policen-Anträgen fehlten Angaben zu den Versicherungsnehmern und deren Situation. Palast von Wallisellen ( emchberger.ch ) Statt die Dokumente dem Broker zur Komplettierung zurückzuschicken, füllten zwei extra für diesen Zulieferer eingestellte Praktikanten die Lücken selber aus. Deren Vorgesetzter, der Chef Vorsorge der Agentur, bezeugte sodann mit seiner Unterschrift, dass alles rechtens sei. Das Gebaren flog auf, als ein Whistleblower die Praxis der Zürcher Generalagentur der Zentrale der Allianz Suiss"
+        },
+        {
+          "source_id": "ip-followup",
+          "source": "Inside Paradeplatz",
+          "title": "Erdbeben bei Allianz Suisse: Zürich-Generalagent raus – Inside Paradeplatz",
+          "url": "https://insideparadeplatz.ch/2023/01/23/erdbeben-bei-allianz-suisse-zuerich-generalagent-raus/",
+          "source_type": "Secondary · follow-up reporting",
+          "retrieved_at": "2026-11-08T11:29:09+00:00",
+          "verification_status": "no_signal",
+          "severity_score": 0.0,
+          "categories_asserted": [],
+          "categories_alleged": [],
+          "excerpt": "en Allianz hat am Freitag ungeahnte Dynamik erhalten. Der Generalagent Zürich der Allianz Suisse geht von Bord. Dieser \"verlässt die Allianz Suisse zum 31. Januar 2023, um sich neuen beruflichen Herausforderungen zu stellen\", schrieb die Versicherung intern. Dann kommt's. \"Wir übernehmen die Generalagentur in Regie. Die Suche nach einem neuen Generalagenten starten wir umgehend.\" Das Ruder packt zunächst ein interner Manager der Allianz Suisse, also der Zentrale in Zürich-Nord. Damit kommt die stolze Generalagentur Zürich, die zuletzt hohes Wachstum geliefert hatte, bis auf weiteres an die kurze Leine des Headquarters. Die rasche Trennung soll auf wachsende interne Aufregung sei"
+        },
+        {
+          "source_id": "ip-followup-dec19",
+          "source": "Inside Paradeplatz",
+          "title": "Skandal bei Allianz Suisse: Wer wusste was? – Inside Paradeplatz",
+          "url": "https://insideparadeplatz.ch/2022/12/19/skandal-bei-allianz-suisse-ceo-geraet-in-fokus/",
+          "source_type": "Secondary · follow-up reporting",
+          "retrieved_at": "2026-11-08T11:29:11+00:00",
+          "verification_status": "no_signal",
+          "severity_score": 0.0,
+          "categories_asserted": [],
+          "categories_alleged": [],
+          "excerpt": "ässig 67 67 Kommentare 22.793 E-Mail WhatsApp Twitter Facebook LinkedIn Seite drucken Es sei \"wichtig zu wissen\", dass \"keine Kundinnen oder Kunden zu Schaden gekommen\" seien\". So der Allianz Suisse-Pressechef im Intranet der Tochter des deutschen Assekuranz-Multis letzten Donnerstag. Er reagierte damit auf eine Story zu rund 1'000 gefundenen, lückenhaften Vorsorge-Anträgen eines Brokers, die in einer Zürcher Generalagentur von Praktikanten ergänzt wurden - mit Wissen der Vorgesetzten. Die Dimension ist riesig. Die Frage wird laut: Wer wusste wann was - und reagierte wie? Laut einer Quelle seien die Probleme mit der externen Brokerfirma und der Zürcher Generalagentur schon vor J\n\ntlich über…"
+        }
+      ]
+    },
+    {
+      "record_id": "allianz24-credit-screening",
+      "title": "Allianz24 applicant rejected after an apparently incorrect credit check",
+      "entity": "Allianz Suisse online brand Allianz24",
+      "evidence_class": "Reported allegation",
+      "geography": "Switzerland",
+      "linked_source_ids": [
+        "srf-credit-screening"
+      ],
+      "collected_source_ids": [
+        "srf-credit-screening"
+      ],
+      "missing_source_ids": [],
+      "status": "allegation_reported",
+      "status_label": "Reported as an allegation",
+      "priority": "medium",
+      "priority_score": 2,
+      "flags": [],
+      "entity_mentioned": false,
+      "signal_summary": {
+        "signals": [
+          {
+            "category": "discrimination",
+            "label": "Discrimination or unfair screening",
+            "kind": "misconduct",
+            "weight": 3,
+            "polarity": "asserted",
+            "snippet": "Was eine \"Espresso\"-Hörerin erlebt hat, kam ihr erst wie ein schlechter Witz vor: Aufgrund ihres Namens ist ihr Antrag für eine Autohaftpflichtversicherung abgelehnt worden.",
+            "match": "Aufgrund ihres Namens"
+          }
+        ],
+        "categories_asserted": [
+          "discrimination"
+        ],
+        "categories_alleged": [],
+        "has_outcome": false,
+        "has_allegation": true,
+        "has_exonerating": false,
+        "severity_score": 3.0,
+        "verification_status": "reported_allegation"
+      },
+      "sources": [
+        {
+          "source_id": "srf-credit-screening",
+          "source": "SRF",
+          "title": "Versicherungen - Sorry, keine Versicherung mit Ihrem Namen! - Kassensturz Espresso - SRF",
+          "url": "https://www.srf.ch/sendungen/kassensturz-espresso/versicherungen-sorry-keine-versicherung-mit-ihrem-namen",
+          "source_type": "Secondary · consumer reporting with company response",
+          "retrieved_at": "2026-11-08T11:29:12+00:00",
+          "verification_status": "reported_allegation",
+          "severity_score": 3.0,
+          "categories_asserted": [
+            "discrimination"
+          ],
+          "categories_alleged": [],
+          "excerpt": ", keine Versicherung mit Ihrem Namen! Was eine \"Espresso\"-Hörerin erlebt hat, kam ihr erst wie ein schlechter Witz vor: Aufgrund ihres Namens ist ihr Antrag für eine Autohaftpflichtversicherung abgelehnt worden. Sie sei nicht kreditwürdig. Dürfen Versicherungen das? Autor: Martina Schnyder 06.11.2014, 05:00 Teilen Teilen Teilen Schliessen Auf Facebook teilen Facebook Auf Bluesky teilen Bluesky Auf LinkedIn teilen LinkedIn Auf X teilen X Per WhatsApp teilen WhatsApp Per E-Mail teilen E-Mail Link kopieren Link kopieren \"Espresso\"-Hörerin Alendona Ala wollte für ihr neues Auto eine Haftpflichtversicherung abschliessen und holte im Internet verschiedene Off"
+        }
+      ]
+    },
+    {
+      "record_id": "swiss-court-benefit-denial",
+      "title": "Federal Supreme Court set aside Allianz Suisse's denial of accident benefits in one case",
+      "entity": "Allianz Suisse Versicherungs-Gesellschaft AG · cases 8C_485/2023 and 8C_510/2023",
+      "evidence_class": "Court decision",
+      "geography": "Switzerland",
+      "linked_source_ids": [
+        "bger-2024-8c485"
+      ],
+      "collected_source_ids": [],
+      "missing_source_ids": [
+        "bger-2024-8c485"
+      ],
+      "status": "source_not_collected",
+      "status_label": "Source not collected",
+      "priority": "high",
+      "priority_score": 3,
+      "flags": [
+        {
+          "severity": "warning",
+          "code": "missing_snapshot",
+          "message": "No collected snapshot exists for the linked source(s)."
+        }
+      ],
+      "entity_mentioned": false,
+      "signal_summary": {
+        "signals": [],
+        "categories_asserted": [],
+        "categories_alleged": [],
+        "has_outcome": false,
+        "has_allegation": false,
+        "has_exonerating": false,
+        "severity_score": 0.0,
+        "verification_status": "no_signal"
+      },
+      "sources": []
+    },
+    {
+      "record_id": "his-policy",
+      "title": "Allianz Suisse's HIS disclosure describes challenge and deletion rights",
+      "entity": "Allianz Suisse and the Swiss Hinweis- und Informationssystem (HIS)",
+      "evidence_class": "Official policy",
+      "geography": "Switzerland",
+      "linked_source_ids": [
+        "allianz-his"
+      ],
+      "collected_source_ids": [
+        "allianz-his"
+      ],
+      "missing_source_ids": [],
+      "status": "disclosure_only",
+      "status_label": "Company disclosure — not an outcome",
+      "priority": "low",
+      "priority_score": 1,
+      "flags": [],
+      "entity_mentioned": false,
+      "signal_summary": {
+        "signals": [],
+        "categories_asserted": [],
+        "categories_alleged": [],
+        "has_outcome": false,
+        "has_allegation": false,
+        "has_exonerating": false,
+        "severity_score": 0.0,
+        "verification_status": "no_signal"
+      },
+      "sources": [
+        {
+          "source_id": "allianz-his",
+          "source": "Allianz Suisse",
+          "title": "Notes and information | Allianz HIS | Allianz",
+          "url": "https://www.allianz.ch/en/information/his.html",
+          "source_type": "Primary · current company policy",
+          "retrieved_at": "2026-11-08T11:29:13+00:00",
+          "verification_status": "no_signal",
+          "severity_score": 0.0,
+          "categories_asserted": [],
+          "categories_alleged": [],
+          "excerpt": "Further rights of persons registered in HIS The right to object to further processing and the right to erasure, rectification, restriction of processing and data transfer of all of the individual's own data stored in HIS: if the requirements for registration are not met or if registered data is incorrect, the registered person may file a legal request for erasure or correction with the registering insurance company. If no agreement is reached, the registered person may contact the Ombudsman of Private Insurance and of Suva free of charge or initiate civil proceedings. The aforementioned rights can be asserted with the registering insurance company and/or with SVV Solution AG."
+        }
+      ]
+    },
+    {
+      "record_id": "swiss-court-benefit-revision",
+      "title": "Federal Supreme Court upheld Allianz Suisse's withdrawal of previously awarded accident benefits",
+      "entity": "Allianz Suisse Versicherungs-Gesellschaft AG · case 8C_193/2016",
+      "evidence_class": "Court decision",
+      "geography": "Switzerland",
+      "linked_source_ids": [
+        "bger-2016-8c193"
+      ],
+      "collected_source_ids": [],
+      "missing_source_ids": [
+        "bger-2016-8c193"
+      ],
+      "status": "source_not_collected",
+      "status_label": "Source not collected",
+      "priority": "high",
+      "priority_score": 3,
+      "flags": [
+        {
+          "severity": "warning",
+          "code": "missing_snapshot",
+          "message": "No collected snapshot exists for the linked source(s)."
+        }
+      ],
+      "entity_mentioned": false,
+      "signal_summary": {
+        "signals": [],
+        "categories_asserted": [],
+        "categories_alleged": [],
+        "has_outcome": false,
+        "has_allegation": false,
+        "has_exonerating": false,
+        "severity_score": 0.0,
+        "verification_status": "no_signal"
+      },
+      "sources": []
+    },
+    {
+      "record_id": "annual-report-disclosure",
+      "title": "2025 reports describe compliance tracking and report no anti-corruption convictions",
+      "entity": "Allianz Group and Allianz Suisse",
+      "evidence_class": "Company disclosure",
+      "geography": "Group and Switzerland",
+      "linked_source_ids": [
+        "allianz-ar-2025",
+        "allianz-sfcr-2025"
+      ],
+      "collected_source_ids": [
+        "allianz-ar-2025",
+        "allianz-sfcr-2025"
+      ],
+      "missing_source_ids": [],
+      "status": "disclosure_only",
+      "status_label": "Company disclosure — not an outcome",
+      "priority": "low",
+      "priority_score": 1,
+      "flags": [],
+      "entity_mentioned": true,
+      "signal_summary": {
+        "signals": [
+          {
+            "category": "criminal_outcome",
+            "label": "Criminal outcome",
+            "kind": "outcome",
+            "weight": 5,
+            "polarity": "policy",
+            "snippet": "The following table shows an overview of the convictions for anti - corruption and anti-bribery law violations: Anti-corruption and anti-bribery convictions and fines for violations (G1-4) 2025 2024 Number of convictions for violation of anti-corruption and anti-bribery laws # - - Amount of fines due to convictions for violation of anti-corruption and anti-bribery laws € thou…",
+            "match": "convictions"
+          },
+          {
+            "category": "bribery",
+            "label": "Bribery or corruption",
+            "kind": "misconduct",
+            "weight": 4,
+            "polarity": "policy",
+            "snippet": "The following table shows an overview of the convictions for anti - corruption and anti-bribery law violations: Anti-corruption and anti-bribery convictions and fines for violations (G1-4) 2025 2024 Number of convictions for violation of anti-corruption and anti-bribery laws # - - Amount of fines due to convictions for violation of anti-corruption and anti-bribery laws € thou…",
+            "match": "corruption"
+          }
+        ],
+        "categories_asserted": [],
+        "categories_alleged": [],
+        "has_outcome": false,
+        "has_allegation": false,
+        "has_exonerating": false,
+        "severity_score": 0.0,
+        "verification_status": "policy_or_program"
+      },
+      "sources": [
+        {
+          "source_id": "allianz-ar-2025",
+          "source": "Allianz SE",
+          "title": "Annual Report 2025",
+          "url": "https://www.allianz.com/content/dam/onemarketing/azcom/Allianz_com/investor-relations/en/results-reports/annual-report/ar-2025/en-allianz-group-annual-report-2025.pdf",
+          "source_type": "Primary · company filing",
+          "retrieved_at": "2026-11-08T11:29:38+00:00",
+          "verification_status": "policy_or_program",
+          "severity_score": 0.0,
+          "categories_asserted": [],
+          "categories_alleged": [],
+          "excerpt": "pose reputational risks or exceed a financial thresh old and criminal cases against Allianz leaders or subsidiaries. The Supervisory Proceedings Data Base includes administrative fines and administrative proceedings which could lead to administrative fines each above a specified threshold, e.g., involving em ployees tied to their work or internally defined sensitive issues, as well as criminal proceedings against Allianz personnel that is related to their work or against subsidiaries of the Allianz Group without a threshold. The corresponding overall amount of material fines, penalties, and compensation for incidents connected to own workforce from proceedings relating to human rights\n\ng. T…"
+        },
+        {
+          "source_id": "allianz-sfcr-2025",
+          "source": "Allianz Suisse",
+          "title": "Report on the Financial Condition 2025",
+          "url": "https://www.allianz.ch/content/dam/onemarketing/azch/common/allianz/de/medienberichte/Bericht_%C3%BCber_die_Finanzlage_ASV_2025.pdf",
+          "source_type": "Primary · Swiss solvency disclosure",
+          "retrieved_at": "2026-11-08T11:29:41+00:00",
+          "verification_status": "no_signal",
+          "severity_score": 0.0,
+          "categories_asserted": [],
+          "categories_alleged": [],
+          "excerpt": "Allianz Suisse Versicherungs-Gesellschaft AG, Wallisellen B Corporate Governance Seiten 11 - 12 C Statutarische Jahresrechnung Seiten 13 - 26 Geschäftsbericht 2025 - Allianz Suisse Versicherungs-Gesellschaft AG 46"
+        }
+      ]
+    }
+  ],
+  "leads": [],
+  "notice": "Automated checks are review aids. A signal is not a finding: read the linked source and keep the evidence class attached to each record."
+}

@@ -7,6 +7,9 @@ from urllib.parse import urlsplit
 import pandas as pd
 import streamlit as st
 
+from evidence.io import read_json, read_jsonl_directory
+from evidence.verification import STATUS_LABELS, STATUS_SEVERITY, build_report
+
 
 ROOT = Path(__file__).parent
 DATA_PATH = ROOT / "data" / "dossier.json"
@@ -51,30 +54,24 @@ def source_link(source):
 
 
 def source_links(source_ids, sources):
-    links = [source_link(sources[source_id]) for source_id in source_ids if source_id in sources]
-    return "<br>".join(links) if links else "No linked source listed."
+    links = []
+    missing = []
+    for source_id in source_ids or []:
+        if source_id in sources:
+            links.append(source_link(sources[source_id]))
+        else:
+            missing.append(
+                '<span class="missing-source">Source <code>{}</code> is missing from the register</span>'.format(
+                    html.escape(text(source_id))
+                )
+            )
+    return "<br>".join(links + missing) if (links or missing) else "No linked source listed."
 
 
 def load_discovery_candidates():
-    candidates = []
-    errors = []
-    files = sorted(DISCOVERY_PATH.glob("*.jsonl")) if DISCOVERY_PATH.exists() else []
-    for path in files:
-        try:
-            with path.open("r", encoding="utf-8") as discovery_file:
-                for line_number, line in enumerate(discovery_file, start=1):
-                    if not line.strip():
-                        continue
-                    try:
-                        value = json.loads(line)
-                        if not isinstance(value, dict):
-                            raise ValueError("expected a JSON object")
-                        value["_discovery_file"] = path.name
-                        candidates.append(value)
-                    except (json.JSONDecodeError, ValueError) as error:
-                        errors.append("{} line {}: {}".format(path.name, line_number, error))
-        except OSError as error:
-            errors.append("{}: {}".format(path.name, error))
+    candidates, errors, files = read_jsonl_directory(DISCOVERY_PATH)
+    for candidate in candidates:
+        candidate.setdefault("_discovery_file", "")
     return candidates, errors, files
 
 
@@ -83,16 +80,55 @@ def load_latest_run_status():
     if not status_files:
         return None, []
     path = status_files[-1]
-    try:
-        with path.open("r", encoding="utf-8") as status_file:
-            return json.load(status_file), []
-    except (OSError, json.JSONDecodeError) as error:
-        return None, ["{}: {}".format(path.name, error)]
+    value, errors = read_json(path)
+    if not isinstance(value, dict):
+        return None, errors or ["{}: expected a JSON object".format(path.name)]
+    return value, errors
 
 
-dossier = load_dossier()
-records = dossier["records"]
-sources = {source["id"]: source for source in dossier["sources"]}
+def record_field(record, field, default=""):
+    value = record.get(field, default) if isinstance(record, dict) else default
+    return value if value is not None else default
+
+
+def record_text(record, field, default=""):
+    return text(record_field(record, field, default))
+
+
+def record_list(record, field):
+    value = record_field(record, field, [])
+    return value if isinstance(value, list) else []
+
+
+def record_sort_key(record):
+    return record_text(record, "sort_date") or "0000-00-00"
+
+
+try:
+    dossier = load_dossier()
+except (OSError, json.JSONDecodeError) as error:
+    st.set_page_config(page_title="Allianz Suisse | Evidence file", page_icon="A", layout="wide")
+    st.error("The dossier could not be read: {}".format(error))
+    st.stop()
+
+if not isinstance(dossier, dict):
+    st.set_page_config(page_title="Allianz Suisse | Evidence file", page_icon="A", layout="wide")
+    st.error("The dossier root must be a JSON object.")
+    st.stop()
+
+records = [record for record in dossier.get("records", []) if isinstance(record, dict)]
+sources = {
+    text(source.get("id")): source
+    for source in dossier.get("sources", [])
+    if isinstance(source, dict) and text(source.get("id"))
+}
+research_steps = [step for step in dossier.get("research_steps", []) if isinstance(step, dict)]
+snapshots, discovery_errors, discovery_files = load_discovery_candidates()
+verification = build_report(dossier, snapshots)
+integrity_summary = verification.get("integrity", {}).get("summary", {})
+verification_by_record = {
+    check.get("record_id"): check for check in verification.get("records", []) if isinstance(check, dict)
+}
 
 st.set_page_config(
     page_title="Allianz Suisse | Evidence file",
@@ -155,6 +191,18 @@ st.markdown(
       .evidence-details { color: var(--ink); margin: .35rem 0 .75rem; padding-left: 1.3rem; }
       .evidence-details li { margin: .18rem 0; line-height: 1.5; }
       .evidence-sources { margin-top: .75rem; font-size: .95rem; line-height: 1.65; }
+      .missing-source { color: #8a2c14; background: #fff0ea; border: 1px solid #d59a83; padding: .12rem .4rem; font-size: .9rem; }
+      .evidence-check { margin: .75rem 0 .2rem; padding: .55rem .72rem; border-left: 4px solid #7390a7; background: #f4f8fb; font-size: .95rem; line-height: 1.5; }
+      .evidence-check.ok { border-left-color: #1c7052; background: #eef8f2; }
+      .evidence-check.warning { border-left-color: #a16600; background: #fff7e3; }
+      .evidence-check ul { margin: .3rem 0 0; padding-left: 1.2rem; }
+      .evidence-check li { margin: .12rem 0; }
+      .lead-card { background: white; border: 1px solid var(--rule); border-left: 6px solid #a16600; padding: 1rem 1.2rem; margin: .8rem 0; }
+      .lead-label { color: #6e4300; background: #fff0c2; border: 1px solid #c38b20; display: inline-block; font-size: .88rem; font-weight: 800; padding: .18rem .5rem; margin-bottom: .45rem; }
+      .lead-snippet { border-left: 4px solid #8297aa; padding: .55rem .75rem; margin: .55rem 0 0; background: #f4f7f9; line-height: 1.55; }
+      .status-chip { display: inline-block; border: 1px solid #7390a7; background: #eaf2f8; color: #163c5e; padding: .2rem .5rem; font-weight: 700; font-size: .9rem; }
+      .status-chip.warning { border-color: #c09236; background: var(--amber-bg); color: var(--amber); }
+      .status-chip.ok { border-color: #579177; background: var(--green-bg); color: var(--green); }
       .discovery-card { background: white; border: 1px solid var(--rule); padding: 1rem 1.2rem; margin: .8rem 0; }
       .discovery-label { color: #6e4300; background: #fff0c2; border: 1px solid #c38b20; display: inline-block; font-size: .9rem; font-weight: 800; padding: .2rem .55rem; margin-bottom: .55rem; }
       .discovery-meta { color: #33495c; font-size: .96rem; line-height: 1.6; }
@@ -178,20 +226,36 @@ st.markdown(
 )
 
 
-def record_card(record):
-    evidence_class = text(record.get("evidence_class"))
+def record_card(record, check=None):
+    evidence_class = record_text(record, "evidence_class")
     reported = evidence_class in ("Reported allegation", "Reported court outcome")
     disclosure = evidence_class in ("Company disclosure", "Official policy")
     card_class = "reported" if reported else "disclosure" if disclosure else "confirmed"
     grade_class = "reported" if reported else "disclosure" if disclosure else ""
-    tags = [record.get("geography", "")]
-    tags.extend(record.get("tags", []))
+    tags = [record_text(record, "geography")] + [text(tag) for tag in record_list(record, "tags")]
     tag_html = "".join(
-        '<span class="evidence-tag">{}</span>'.format(html.escape(text(tag)))
+        '<span class="evidence-tag">{}</span>'.format(html.escape(tag))
         for tag in tags
-        if text(tag)
+        if tag
     )
-    details = "".join("<li>{}</li>".format(html.escape(text(item))) for item in record.get("details", []))
+    details = "".join(
+        "<li>{}</li>".format(html.escape(text(item))) for item in record_list(record, "details")
+    )
+    verification_html = ""
+    if isinstance(check, dict):
+        status = text(check.get("status"))
+        severity = STATUS_SEVERITY.get(status, "info")
+        label = text(check.get("status_label")) or STATUS_LABELS.get(status, status)
+        flag_items = "".join(
+            "<li>{}</li>".format(html.escape(text(flag.get("message"))))
+            for flag in (check.get("flags") or [])[:3]
+            if isinstance(flag, dict)
+        )
+        verification_html = '<div class="evidence-check {}"><strong>Evidence check:</strong> {}{}</div>'.format(
+            html.escape(severity, quote=True),
+            html.escape(label),
+            '<ul>{}</ul>'.format(flag_items) if flag_items else "",
+        )
     st.markdown(
         """
         <article class="evidence-card {card_class}">
@@ -204,20 +268,22 @@ def record_card(record):
           <div class="evidence-entity">{entity}</div>
           <div class="evidence-summary">{summary}</div>
           {details_html}
+          {verification_html}
           <div class="evidence-sources"><strong>Sources</strong><br>{links}</div>
         </article>
         """.format(
             card_class=card_class,
             grade_class=grade_class,
-            date=html.escape(text(record.get("date_label"))),
-            category=html.escape(text(record.get("category"))),
-            evidence_class=html.escape(evidence_class),
+            date=html.escape(record_text(record, "date_label")),
+            category=html.escape(record_text(record, "category")),
+            evidence_class=html.escape(evidence_class or "Unclassified"),
             tags=tag_html,
-            title=html.escape(text(record.get("title"))),
-            entity=html.escape(text(record.get("entity"))),
-            summary=html.escape(text(record.get("summary"))),
+            title=html.escape(record_text(record, "title")),
+            entity=html.escape(record_text(record, "entity")),
+            summary=html.escape(record_text(record, "summary")),
             details_html='<ul class="evidence-details">{}</ul>'.format(details) if details else "",
-            links=source_links(record.get("source_ids", []), sources),
+            verification_html=verification_html,
+            links=source_links(record_list(record, "source_ids"), sources),
         ),
         unsafe_allow_html=True,
     )
@@ -228,11 +294,17 @@ with st.sidebar:
     st.caption("Allianz Suisse corporate conduct dossier")
     page = st.radio(
         "Go to",
-        ["Overview", "Findings", "Research plan", "Sources", "Collected sources"],
+        ["Overview", "Findings", "Evidence checks", "Research plan", "Sources", "Collected sources"],
         label_visibility="collapsed",
     )
     st.markdown("---")
     st.caption("Each finding keeps its evidence type and Allianz entity visible.")
+    if integrity_summary["errors"]:
+        st.caption("Data checks: {} error(s), {} warning(s)".format(integrity_summary["errors"], integrity_summary["warnings"]))
+    elif integrity_summary["warnings"]:
+        st.caption("Data checks: {} warning(s), no errors".format(integrity_summary["warnings"]))
+    else:
+        st.caption("Data checks: no structural issues")
     st.caption("Last reviewed: {}".format(dossier.get("reviewed_on", "Not recorded")))
 
 
@@ -250,23 +322,36 @@ st.markdown(
 
 if page == "Overview":
     primary_outcomes = sum(
-        1 for record in records if record["evidence_class"] in ("Regulatory or criminal outcome", "Court decision")
+        1
+        for record in records
+        if record_text(record, "evidence_class") in ("Regulatory or criminal outcome", "Court decision")
     )
-    swiss_records = sum(1 for record in records if record["geography"] == "Switzerland")
+    swiss_records = sum(1 for record in records if record_text(record, "geography") == "Switzerland")
     reported_records = sum(
-        1 for record in records if record["evidence_class"] in ("Reported allegation", "Reported court outcome")
+        1
+        for record in records
+        if record_text(record, "evidence_class") in ("Reported allegation", "Reported court outcome")
     )
     metric_columns = st.columns(4)
     metric_columns[0].metric("Dossier records", len(records))
     metric_columns[1].metric("Regulatory or court outcomes", primary_outcomes)
     metric_columns[2].metric("Switzerland records", swiss_records)
     metric_columns[3].metric("Reported allegations or outcomes", reported_records)
+    st.caption(
+        "Evidence checks: {} of {} records supported by a primary outcome · "
+        "{} record(s) with review flags · {} unrecorded lead(s).".format(
+            verification["summary"]["records_supported"],
+            verification["summary"]["records"],
+            verification["summary"]["records_with_warnings"],
+            verification["summary"]["leads"],
+        )
+    )
 
     st.markdown("<div class='section-rule'></div>", unsafe_allow_html=True)
     left, right = st.columns([1, 1])
     with left:
         st.subheader("Records by evidence type")
-        evidence_counts = Counter(record["evidence_class"] for record in records)
+        evidence_counts = Counter(record_text(record, "evidence_class") or "Unclassified" for record in records)
         chart_data = pd.DataFrame(
             {"Records": list(evidence_counts.values())},
             index=list(evidence_counts.keys()),
@@ -286,25 +371,25 @@ if page == "Overview":
 
     st.markdown("<div class='section-rule'></div>", unsafe_allow_html=True)
     st.subheader("Latest records")
-    for record in sorted(records, key=lambda item: item["sort_date"], reverse=True)[:4]:
-        record_card(record)
+    for record in sorted(records, key=record_sort_key, reverse=True)[:4]:
+        record_card(record, verification_by_record.get(record_text(record, "id")))
 
 
 elif page == "Findings":
     st.subheader("Findings register")
     st.write("Filter the records, then open a source link to inspect the underlying material.")
     filter_columns = st.columns([1.1, 1, 1.5])
-    evidence_options = sorted({record["evidence_class"] for record in records})
-    geography_options = sorted({record["geography"] for record in records})
+    evidence_options = sorted({record_text(record, "evidence_class") or "Unclassified" for record in records})
+    geography_options = sorted({record_text(record, "geography") or "Not recorded" for record in records})
     selected_evidence = filter_columns[0].multiselect("Evidence class", evidence_options)
     selected_geography = filter_columns[1].multiselect("Geography", geography_options)
     search_text = filter_columns[2].text_input("Search records and sources", placeholder="Entity, topic, publisher or source detail")
 
     visible_records = []
     for record in records:
-        if selected_evidence and record["evidence_class"] not in selected_evidence:
+        if selected_evidence and (record_text(record, "evidence_class") or "Unclassified") not in selected_evidence:
             continue
-        if selected_geography and record["geography"] not in selected_geography:
+        if selected_geography and (record_text(record, "geography") or "Not recorded") not in selected_geography:
             continue
         linked_source_text = " ".join(
             "{} {} {} {}".format(
@@ -313,38 +398,42 @@ elif page == "Findings":
                 sources[source_id].get("source_type", ""),
                 sources[source_id].get("use", ""),
             )
-            for source_id in record.get("source_ids", [])
+            for source_id in record_list(record, "source_ids")
             if source_id in sources
         )
         searchable = " ".join(
             [
-                text(record.get("title")),
-                text(record.get("entity")),
-                text(record.get("summary")),
-                text(record.get("category")),
+                record_text(record, "title"),
+                record_text(record, "entity"),
+                record_text(record, "summary"),
+                record_text(record, "category"),
                 linked_source_text,
             ]
-            + [text(item) for item in record.get("details", [])]
-            + [text(item) for item in record.get("tags", [])]
+            + [text(item) for item in record_list(record, "details")]
+            + [text(item) for item in record_list(record, "tags")]
         ).lower()
         if search_text and search_text.lower() not in searchable:
             continue
         visible_records.append(record)
 
-    visible_records.sort(key=lambda item: item["sort_date"], reverse=True)
+    visible_records.sort(key=record_sort_key, reverse=True)
     st.caption("{} of {} records shown".format(len(visible_records), len(records)))
     if visible_records:
         for record in visible_records:
-            record_card(record)
+            record_card(record, verification_by_record.get(record_text(record, "id")))
         export_rows = [
             {
-                "date": record["date_label"],
-                "title": record["title"],
-                "entity": record["entity"],
-                "geography": record["geography"],
-                "evidence_class": record["evidence_class"],
-                "summary": record["summary"],
-                "sources": " | ".join(sources[source_id]["url"] for source_id in record["source_ids"]),
+                "date": record_text(record, "date_label"),
+                "title": record_text(record, "title"),
+                "entity": record_text(record, "entity"),
+                "geography": record_text(record, "geography"),
+                "evidence_class": record_text(record, "evidence_class"),
+                "summary": record_text(record, "summary"),
+                "sources": " | ".join(
+                    safe_url(sources[source_id].get("url"))
+                    for source_id in record_list(record, "source_ids")
+                    if source_id in sources
+                ),
             }
             for record in visible_records
         ]
@@ -358,22 +447,249 @@ elif page == "Findings":
         st.info("No records match those filters. Clear one or more filters to widen the results.")
 
 
+elif page == "Evidence checks":
+    st.subheader("Evidence checks")
+    st.write(
+        "Automated cross-checks between each finding and the collected source passages. "
+        "A flag is a review lead, not a finding: open the source before changing a record."
+    )
+    summary = verification.get("summary", {})
+    metric_columns = st.columns(4)
+    metric_columns[0].metric("Records checked", summary.get("records", 0))
+    metric_columns[1].metric("Supported by primary outcome", summary.get("records_supported", 0))
+    metric_columns[2].metric("Records with review flags", summary.get("records_with_warnings", 0))
+    metric_columns[3].metric("Unrecorded leads", summary.get("leads", 0))
+    integrity = verification.get("integrity", {}).get("summary", {})
+    if integrity.get("errors"):
+        st.error(
+            "The dossier has {} structural error(s). Fix them before relying on these checks.".format(
+                integrity["errors"]
+            )
+        )
+    elif integrity.get("warnings"):
+        st.warning(
+            "The dossier has {} integrity warning(s); see the Integrity tab.".format(integrity["warnings"])
+        )
+    st.caption(
+        "Checks generated {} from {} collected snapshot(s). {}".format(
+            text(verification.get("generated_at")),
+            len(snapshots),
+            text(verification.get("notice")),
+        )
+    )
+    st.download_button(
+        "Download verification report (JSON)",
+        json.dumps(verification, ensure_ascii=False, indent=2).encode("utf-8"),
+        file_name="allianz-verification-report.json",
+        mime="application/json",
+    )
+
+    record_tab, leads_tab, integrity_tab = st.tabs(["Records", "Unrecorded leads", "Integrity"])
+
+    with record_tab:
+        filter_columns = st.columns([1, 1.6])
+        priority_options = ["high", "medium", "low"]
+        selected_priorities = filter_columns[0].multiselect(
+            "Review priority", priority_options, default=priority_options
+        )
+        present_statuses = sorted(
+            {text(check.get("status")) for check in verification.get("records", []) if text(check.get("status"))}
+        )
+        selected_statuses = filter_columns[1].multiselect(
+            "Evidence status",
+            present_statuses,
+            default=present_statuses,
+            format_func=lambda value: STATUS_LABELS.get(value, value),
+        )
+        visible_checks = [
+            check
+            for check in verification.get("records", [])
+            if check.get("priority") in selected_priorities
+            and check.get("status") in selected_statuses
+        ]
+        st.caption("{} of {} records shown".format(len(visible_checks), summary.get("records", 0)))
+        if visible_checks:
+            status_rows = [
+                {
+                    "Priority": text(check.get("priority")).upper(),
+                    "Status": text(check.get("status_label")),
+                    "Evidence class": text(check.get("evidence_class")),
+                    "Record": text(check.get("title")),
+                    "Flags": "; ".join(
+                        text(flag.get("code")) for flag in check.get("flags", []) if isinstance(flag, dict)
+                    ),
+                }
+                for check in visible_checks
+            ]
+            st.dataframe(pd.DataFrame(status_rows), hide_index=True, use_container_width=True)
+            for check in visible_checks:
+                status = text(check.get("status"))
+                severity = STATUS_SEVERITY.get(status, "info")
+                with st.container(border=True):
+                    st.markdown("### {}".format(html.escape(text(check.get("title")))))
+                    st.markdown(
+                        '<span class="status-chip {}">{}</span>'.format(
+                            html.escape(severity, quote=True),
+                            html.escape(text(check.get("status_label"))),
+                        ),
+                        unsafe_allow_html=True,
+                    )
+                    st.caption(
+                        "Priority: {} · {} · {} linked source(s), {} collected".format(
+                            text(check.get("priority")),
+                            text(check.get("evidence_class")),
+                            len(check.get("linked_source_ids", [])),
+                            len(check.get("collected_source_ids", [])),
+                        )
+                    )
+                    flags = [flag for flag in check.get("flags", []) if isinstance(flag, dict)]
+                    if flags:
+                        st.markdown(
+                            "\n".join(
+                                "- {}".format(html.escape(text(flag.get("message")))) for flag in flags
+                            )
+                        )
+                    signal_summary = check.get("signal_summary", {})
+                    categories = list(signal_summary.get("categories_asserted", [])) + list(
+                        signal_summary.get("categories_alleged", [])
+                    )
+                    if categories:
+                        st.caption("Signals in the checked excerpts: {}".format(", ".join(sorted(set(categories)))))
+                    with st.expander("Evidence passages and sources"):
+                        for checked_source in check.get("sources", []):
+                            if not isinstance(checked_source, dict):
+                                continue
+                            st.markdown(
+                                "**{}** · {}".format(
+                                    html.escape(text(checked_source.get("title"))),
+                                    html.escape(text(checked_source.get("source_type"))),
+                                )
+                            )
+                            st.caption(
+                                "Retrieved: {}".format(text(checked_source.get("retrieved_at")) or "not recorded")
+                            )
+                            excerpt = text(checked_source.get("excerpt"))
+                            if excerpt:
+                                st.markdown(
+                                    '<div class="discovery-excerpt">{}</div>'.format(html.escape(excerpt)),
+                                    unsafe_allow_html=True,
+                                )
+                            url = safe_url(checked_source.get("url"))
+                            if url:
+                                st.markdown(
+                                    '<a href="{}" target="_blank" rel="noopener noreferrer">Open source</a>'.format(
+                                        html.escape(url, quote=True)
+                                    ),
+                                    unsafe_allow_html=True,
+                                )
+                        st.markdown(
+                            source_links(check.get("linked_source_ids", []), sources), unsafe_allow_html=True
+                        )
+        else:
+            st.info("No records match those filters.")
+
+    with leads_tab:
+        leads = [lead for lead in verification.get("leads", []) if isinstance(lead, dict)]
+        if not leads:
+            st.success(
+                "No unrecorded wrongdoing signals were found in the collected excerpts. "
+                "This is not proof that no further matters exist; collect more sources and widen the register."
+            )
+        else:
+            lead_filters = st.columns([1.4, 1])
+            categories = sorted({text(lead.get("category")) for lead in leads if text(lead.get("category"))})
+            selected_categories = lead_filters[0].multiselect("Signal category", categories, default=categories)
+            source_scope = lead_filters[1].radio(
+                "Source type", ["All", "Primary", "Secondary"], horizontal=True
+            )
+            visible_leads = []
+            for lead in leads:
+                if text(lead.get("category")) not in selected_categories:
+                    continue
+                if source_scope == "Primary" and not lead.get("primary_source"):
+                    continue
+                if source_scope == "Secondary" and lead.get("primary_source"):
+                    continue
+                visible_leads.append(lead)
+            st.caption("{} of {} lead(s) shown".format(len(visible_leads), len(leads)))
+            for lead in visible_leads:
+                source_id = text(lead.get("source_id"))
+                link = source_link(sources[source_id]) if source_id in sources else html.escape(text(lead.get("title")))
+                st.markdown(
+                    """
+                    <div class="lead-card">
+                      <div class="lead-label">{label} · not yet in the dossier</div>
+                      <div><strong>{source}</strong> · {source_type}</div>
+                      <div class="lead-snippet">{snippet}</div>
+                      <div class="discovery-meta">{reason}</div>
+                      <div class="evidence-sources">{link}</div>
+                    </div>
+                    """.format(
+                        label=html.escape(text(lead.get("label"))),
+                        source=html.escape(text(lead.get("source"))),
+                        source_type=html.escape(text(lead.get("source_type"))),
+                        snippet=html.escape(text(lead.get("snippet"))),
+                        reason=html.escape(text(lead.get("reason"))),
+                        link=link,
+                    ),
+                    unsafe_allow_html=True,
+                )
+
+    with integrity_tab:
+        issues = [issue for issue in verification.get("integrity", {}).get("issues", []) if isinstance(issue, dict)]
+        selected_severities = st.multiselect(
+            "Severity", ["error", "warning", "info"], default=["error", "warning"]
+        )
+        visible_issues = [issue for issue in issues if issue.get("severity") in selected_severities]
+        st.caption(
+            "{} of {} integrity item(s) shown. Errors block the collector; warnings need a human decision.".format(
+                len(visible_issues), len(issues)
+            )
+        )
+        if visible_issues:
+            st.dataframe(
+                pd.DataFrame(
+                    [
+                        {
+                            "Severity": text(issue.get("severity")).upper(),
+                            "Check": text(issue.get("code")),
+                            "Reference": text(issue.get("ref")) or "—",
+                            "Message": text(issue.get("message")),
+                        }
+                        for issue in visible_issues
+                    ]
+                ),
+                hide_index=True,
+                use_container_width=True,
+            )
+        else:
+            st.success("No integrity items at the selected severities.")
+        missing_sources = verification.get("missing_source_ids", [])
+        if missing_sources:
+            st.markdown("**Sources linked to findings but not yet collected**")
+            st.write(", ".join(missing_sources))
+
+    st.markdown("<div class='section-rule'></div>", unsafe_allow_html=True)
+
+
 elif page == "Research plan":
     st.subheader("Research plan")
     st.write("Plan items, current coverage and the work still open.")
-    for index, step in enumerate(dossier["research_steps"], start=1):
-        step_title = "{}. {}  |  {}".format(index, step["name"], step["status"])
+    for index, step in enumerate(research_steps, start=1):
+        step_title = "{}. {}  |  {}".format(
+            index, text(step.get("name")) or "Untitled step", text(step.get("status")) or "Status not recorded"
+        )
         with st.expander(step_title, expanded=index <= 2):
             st.markdown("**Coverage**")
-            st.write(step["coverage"])
+            st.write(text(step.get("coverage")))
             st.markdown("**Source result**")
-            st.write(step["result"])
+            st.write(text(step.get("result")))
             if step.get("source_ids"):
                 st.markdown("**Sources**")
-                st.markdown(source_links(step["source_ids"], sources), unsafe_allow_html=True)
+                st.markdown(source_links(step.get("source_ids", []), sources), unsafe_allow_html=True)
             if step.get("next_action"):
                 st.markdown("**Next action**")
-                st.write(step["next_action"])
+                st.write(text(step.get("next_action")))
 
     st.markdown("<div class='section-rule'></div>", unsafe_allow_html=True)
 
@@ -383,13 +699,13 @@ elif page == "Sources":
     st.write("Primary regulator, court and company records are identified separately from journalism and aggregator leads.")
     query = st.text_input("Find a source", placeholder="Publisher, topic or document type")
     visible_sources = []
-    for source in dossier["sources"]:
+    for source in sources.values():
         haystack = " ".join(
             text(source.get(key)) for key in ("publisher", "title", "source_type", "use")
         ).lower()
         if not query or query.lower() in haystack:
             visible_sources.append(source)
-    st.caption("{} of {} sources shown".format(len(visible_sources), len(dossier["sources"])))
+    st.caption("{} of {} sources shown".format(len(visible_sources), len(sources)))
     for source in visible_sources:
         with st.container(border=True):
             st.markdown("### {}".format(html.escape(text(source.get("title")))))
@@ -410,10 +726,10 @@ elif page == "Sources":
                 )
 
 
-else:
+elif page == "Collected sources":
     st.subheader("Collected sources")
     st.write("The collector is an on-demand, one-shot job. It fetches named source URLs already linked to findings and stores a short excerpt, document hash and access status. It does not discover new URLs or run on a schedule.")
-    candidates, discovery_errors, discovery_files = load_discovery_candidates()
+    candidates = snapshots
     latest_status, status_errors = load_latest_run_status()
     if discovery_errors:
         for error in discovery_errors:
@@ -435,16 +751,23 @@ else:
             "blocked": "Access denied",
             "access_challenge": "Automated access challenge",
             "no_relevant_text": "No relevant text",
+            "no_linked_record": "No linked finding",
             "no_extractable_text": "No readable text",
             "request_error": "Request failed",
+            "retry_exhausted": "Retries exhausted",
             "http_error": "HTTP error",
             "rate_limited": "Rate limited",
+            "invalid_url": "Invalid source URL",
+            "invalid_redirect": "Unsafe redirect",
+            "unsupported_content": "Unsupported document type",
+            "internal_error": "Collector error",
             "extraction_error": "Text extraction failed",
             "skipped_large": "Over size limit",
             "skipped_index": "Skipped index",
         }
+        status_items = [item for item in latest_status.get("sources", []) if isinstance(item, dict)]
         status_rows = []
-        for source_status in latest_status.get("sources", []):
+        for source_status in status_items:
             status_rows.append(
                 {
                     "Source": text(source_status.get("source")),
@@ -460,7 +783,7 @@ else:
             st.caption("Access-denied sources remain listed. Open the official source links below to read them in a browser.")
             st.dataframe(pd.DataFrame(status_rows), hide_index=True, use_container_width=True)
             with st.expander("Official source links"):
-                for source_status in latest_status.get("sources", []):
+                for source_status in status_items:
                     source = sources.get(source_status.get("source_id"), source_status)
                     st.markdown(source_link(source), unsafe_allow_html=True)
 
@@ -518,8 +841,13 @@ else:
                 if text(candidate.get("source_use")):
                     st.write(text(candidate.get("source_use")))
                 related_records = candidate.get("related_records", [])
-                if related_records:
-                    st.caption("Linked records: {}".format(" · ".join(text(record) for record in related_records)))
+                linked_titles = (
+                    [text(record) for record in related_records]
+                    if isinstance(related_records, list)
+                    else []
+                )
+                if linked_titles:
+                    st.caption("Linked records: {}".format(" · ".join(linked_titles)))
                 excerpt = text(candidate.get("text_excerpt"))
                 if excerpt:
                     st.markdown('<div class="discovery-excerpt">{}</div>'.format(html.escape(excerpt)), unsafe_allow_html=True)
