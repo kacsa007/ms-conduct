@@ -1,8 +1,10 @@
 # Allianz Suisse research dashboard
 
-The dashboard and source collector support the source-linked article in
-[`article/README.md`](article/README.md). Findings stay attached to their
-evidence class, the exact Allianz entity and the official source.
+The dashboard and source collector support the source-linked articles in
+[`article/README.md`](article/README.md) and
+[`article/generated/allianz-conduct-review.md`](article/generated/allianz-conduct-review.md).
+Findings stay attached to their evidence class, the exact Allianz entity and the
+official source.
 
 ## What the code checks
 
@@ -79,6 +81,19 @@ python3 -m evidence report --output data/discovery/verification_report.json
 `validate` exits `1` on structural errors (`--strict` also fails on warnings).
 Both commands work without network access.
 
+## Generate the source-linked article
+
+```bash
+python3 -m publishing
+```
+
+This writes a Markdown draft and three local SVG figures to `article/generated/`.
+The writer fails on a structurally invalid dossier, labels reported allegations
+as claims, quotes company responses only where the record attributes them, and
+includes an internal publication-check appendix. See
+[`publishing/README.md`](publishing/README.md) for options and the pre-publication
+checklist.
+
 ## Tests
 
 ```bash
@@ -89,7 +104,8 @@ ruff check . --select F,E9
 
 The suite uses fake HTTP responses, so it runs offline and covers retries,
 fallbacks, access challenges, encoding, record-level excerpt separation,
-wrongdoing polarity, dossier integrity and snapshot retention.
+wrongdoing polarity, dossier integrity, snapshot retention, Markdown escaping,
+figure self-containment and the article's unresolved-source safeguards.
 
 ## Record labels
 
@@ -105,8 +121,9 @@ wrongdoing polarity, dossier integrity and snapshot retention.
 app.py                      Streamlit dashboard
 evidence/                   shared checks: text, matching, signals, schema, verification
 scraper/                    on-demand source collector
+publishing/                 Markdown article and SVG figure writer
 data/dossier.json           findings, sources and research plan
 data/discovery/             collected snapshots, run status, verification report, archive
-article/                    source-linked article
+article/                    source-linked article and generated review
 tests/                      offline pytest suite
 ```

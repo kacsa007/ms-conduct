@@ -1,5 +1,10 @@
 # Allianz Laundry
 
+> A generated, evidence-graded review built from the same research file is in
+> [`generated/allianz-conduct-review.md`](generated/allianz-conduct-review.md).
+> It keeps each record's evidence class, links a numbered source register and
+> includes company responses and an explicit limitations section.
+
 ### Enforcement records, Swiss insurance reporting and company statements
 
 The public record includes a U.S. securities-fraud guilty plea, an AML/CFT control sanction in Luxembourg, Australian insurance convictions and Swiss reporting about Allianz Suisse. This article names the entity and source for each item.
