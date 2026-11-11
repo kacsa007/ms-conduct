@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="478" viewBox="0 0 1100 478" role="img" aria-labelledby="title desc">
+  <title id="title">Records by evidence class</title>
+  <desc id="desc">Bar chart of 10 records by evidence class: 4 Regulatory or criminal outcome, 2 Court decision, 2 Reported allegation, 1 Company disclosure, 1 Official policy.</desc>
+  <rect width="1100" height="478" fill="#f3f6f8"/>
+<text x="64" y="58" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#0758a5" text-anchor="start" letter-spacing="2">EVIDENCE MIX</text>
+<text x="64" y="104" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#142536" text-anchor="start">Records by evidence class</text>
+<text x="64" y="130" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#42566a" text-anchor="start">A record count, not a count of separate cases or people. Classes are defined in the article.</text>
+<text x="64" y="164" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#142536" text-anchor="start">Regulatory or criminal outcome</text>
+<rect x="420" y="147" width="640" height="22" rx="5" fill="#e5ebf0"/>
+<rect x="420" y="147" width="640" height="22" rx="5" fill="#0758a5"/>
+<text x="1072" y="164" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#142536" text-anchor="start">4</text>
+<text x="64" y="182" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#42566a" text-anchor="start">Source-linked record</text>
+<text x="64" y="220" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#142536" text-anchor="start">Court decision</text>
+<rect x="420" y="203" width="640" height="22" rx="5" fill="#e5ebf0"/>
+<rect x="420" y="203" width="320" height="22" rx="5" fill="#1c5f8a"/>
+<text x="752" y="220" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#142536" text-anchor="start">2</text>
+<text x="64" y="238" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#42566a" text-anchor="start">Source-linked record</text>
+<text x="64" y="276" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#142536" text-anchor="start">Reported allegation</text>
+<rect x="420" y="259" width="640" height="22" rx="5" fill="#e5ebf0"/>
+<rect x="420" y="259" width="320" height="22" rx="5" fill="#a16600"/>
+<text x="752" y="276" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#142536" text-anchor="start">2</text>
+<text x="64" y="294" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#42566a" text-anchor="start">Source-linked record</text>
+<text x="64" y="332" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#142536" text-anchor="start">Company disclosure</text>
+<rect x="420" y="315" width="640" height="22" rx="5" fill="#e5ebf0"/>
+<rect x="420" y="315" width="160" height="22" rx="5" fill="#1c7052"/>
+<text x="592" y="332" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#142536" text-anchor="start">1</text>
+<text x="64" y="350" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#42566a" text-anchor="start">Source-linked record</text>
+<text x="64" y="388" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#142536" text-anchor="start">Official policy</text>
+<rect x="420" y="371" width="640" height="22" rx="5" fill="#e5ebf0"/>
+<rect x="420" y="371" width="160" height="22" rx="5" fill="#316b58"/>
+<text x="592" y="388" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#142536" text-anchor="start">1</text>
+<text x="64" y="406" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#42566a" text-anchor="start">Source-linked record</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="536" viewBox="0 0 1100 536" role="img" aria-labelledby="title desc">
+  <title id="title">Records by jurisdiction and evidence type</title>
+  <desc id="desc">Stacked bar chart of 10 records across 5 jurisdictions, split by confirmed outcomes, reported allegations and company statements.</desc>
+  <rect width="1100" height="536" fill="#f3f6f8"/>
+<text x="64" y="58" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#0758a5" text-anchor="start" letter-spacing="2">JURISDICTIONS</text>
+<text x="64" y="104" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#142536" text-anchor="start">Records by jurisdiction and evidence type</text>
+<text x="64" y="130" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#42566a" text-anchor="start">Different legal systems and entities; the counts are not a ranking of misconduct.</text>
+<text x="64" y="176" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#142536" text-anchor="start">Switzerland</text>
+<text x="64" y="194" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#42566a" text-anchor="start">5 record(s)</text>
+<rect x="360" y="160" width="244" height="24" fill="#0758a5"/>
+<text x="482.0" y="177" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<rect x="604" y="160" width="244" height="24" fill="#a16600"/>
+<text x="726.0" y="177" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<rect x="848" y="160" width="122" height="24" fill="#1c7052"/>
+<text x="909.0" y="177" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<text x="984" y="177" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#142536" text-anchor="start">5</text>
+<text x="64" y="236" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#142536" text-anchor="start">United States</text>
+<text x="64" y="254" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#42566a" text-anchor="start">2 record(s)</text>
+<rect x="360" y="220" width="244" height="24" fill="#0758a5"/>
+<text x="482.0" y="237" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+<text x="984" y="237" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#142536" text-anchor="start">2</text>
+<text x="64" y="296" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#142536" text-anchor="start">Australia</text>
+<text x="64" y="314" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#42566a" text-anchor="start">1 record(s)</text>
+<rect x="360" y="280" width="122" height="24" fill="#0758a5"/>
+<text x="421.0" y="297" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<text x="984" y="297" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#142536" text-anchor="start">1</text>
+<text x="64" y="356" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#142536" text-anchor="start">Group and Switzerland</text>
+<text x="64" y="374" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#42566a" text-anchor="start">1 record(s)</text>
+<rect x="360" y="340" width="122" height="24" fill="#1c7052"/>
+<text x="421.0" y="357" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<text x="984" y="357" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#142536" text-anchor="start">1</text>
+<text x="64" y="416" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#142536" text-anchor="start">Luxembourg</text>
+<text x="64" y="434" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#42566a" text-anchor="start">1 record(s)</text>
+<rect x="360" y="400" width="122" height="24" fill="#0758a5"/>
+<text x="421.0" y="417" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+<text x="984" y="417" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#142536" text-anchor="start">1</text>
+<rect x="64" y="491" width="14" height="14" rx="3" fill="#0758a5"/><text x="86" y="502" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#42566a" text-anchor="start">Confirmed outcome</text><rect x="235" y="491" width="14" height="14" rx="3" fill="#a16600"/><text x="257" y="502" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#42566a" text-anchor="start">Reported allegation/outcome</text><rect x="480" y="491" width="14" height="14" rx="3" fill="#1c7052"/><text x="502" y="502" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#42566a" text-anchor="start">Company statement/policy</text>
+</svg>
