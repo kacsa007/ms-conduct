@@ -1,0 +1,24 @@
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+      - name: Lint for errors
+        run: ruff check . --select F,E9
+      - name: Run offline tests
+        run: python -m pytest -q
+      - name: Validate dossier and snapshots
+        run: python -m evidence validate --snapshots

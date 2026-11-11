@@ -43,3 +43,5 @@ Allianz Suisse's HIS disclosure says an entry by itself cannot be the sole reaso
 ## Source collection
 
 The dashboard's **Collected sources** view downloads the named source links in the research file and stores an excerpt, retrieval date and document hash. A source that rejects automated access remains visible with its official link and access status.
+
+The **Evidence checks** view compares each finding with its collected excerpt: it distinguishes a primary outcome from a reported allegation, flags a confirmed outcome whose excerpt contains no outcome wording, and lists wrongdoing signals in a source that no record yet covers. These are review leads, not additional findings.
