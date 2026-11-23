@@ -294,7 +294,7 @@ with st.sidebar:
     st.caption("Allianz Suisse corporate conduct dossier")
     page = st.radio(
         "Go to",
-        ["Overview", "Findings", "Evidence checks", "Research plan", "Sources", "Collected sources"],
+        ["Overview", "Findings", "Evidence checks", "Research plan", "Sources", "Collected sources", "Reddit discussions"],
         label_visibility="collapsed",
     )
     st.markdown("---")
@@ -860,3 +860,9 @@ elif page == "Collected sources":
                         unsafe_allow_html=True,
                     )
 
+
+
+elif page == "Reddit discussions":
+    from reddit_monitor.dashboard import show
+
+    show(ROOT)

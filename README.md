@@ -127,3 +127,10 @@ data/discovery/             collected snapshots, run status, verification report
 article/                    source-linked article and generated review
 tests/                      offline pytest suite
 ```
+
+## Allianz on Reddit
+
+The **Reddit discussions** dashboard page reads the daily aggregate report. An
+authorised local copy of the SQLite database adds full-text lookup, topic
+filters and links to the original posts and comments. Setup, coverage and
+report commands are in [the Reddit collector guide](reddit_monitor/README.md).
