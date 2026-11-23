@@ -9,6 +9,7 @@ import time
 from .archive import Archive, DEFAULT_REPO, cipher_from_env
 from .client import Reddit
 from .collect import collect
+from .export import DEFAULT_OUTPUT, export_csv
 from .store import DEFAULT_DB, connect, report
 
 
@@ -54,7 +55,7 @@ def markdown(data):
     return "\n".join(lines)
 
 
-def run_daily():
+def run_daily(output=DEFAULT_OUTPUT):
     required = (
         "REDDIT_CLIENT_ID",
         "REDDIT_CLIENT_SECRET",
@@ -78,6 +79,8 @@ def run_daily():
         with closing(connect(path)) as db:
             stats = collect(db, Reddit(), now)
             result = report(db, now)
+            export_csv(db, now, output / "reddit-discussions.csv")
+            (output / "report.md").write_text(markdown(result) + "\n", encoding="utf-8")
             db.execute("VACUUM")
         archive.publish(
             release,
@@ -98,9 +101,13 @@ def main():
         description="Collect and report on public Reddit discussions about Allianz."
     )
     commands = parser.add_subparsers(dest="command", required=True)
-    for name in ("collect", "report", "restore"):
+    for name in ("collect", "report", "restore", "export"):
         sub = commands.add_parser(name)
         sub.add_argument("--db", type=Path, default=DEFAULT_DB)
+        if name == "export":
+            sub.add_argument(
+                "--output", type=Path, default=DEFAULT_OUTPUT / "reddit-discussions.csv"
+            )
         if name == "report":
             sub.add_argument(
                 "--format", choices=["markdown", "json"], default="markdown"
@@ -112,10 +119,11 @@ def main():
                 action="store_true",
                 help="replace an existing local database",
             )
-    commands.add_parser("daily", help="scheduled GitHub Actions entry point")
+    daily = commands.add_parser("daily", help="scheduled GitHub Actions entry point")
+    daily.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
     if args.command == "daily":
-        return run_daily()
+        return run_daily(args.output)
     if args.command == "restore":
         if args.db.exists() and not args.replace:
             parser.error("Database already exists. Use --replace to refresh it.")
@@ -123,12 +131,15 @@ def main():
         if not archive.restore(archive.release(), args.db, cipher_from_env()):
             parser.error("No published database yet")
         return
-    if args.command == "report" and not args.db.is_file():
+    if args.command in {"report", "export"} and not args.db.is_file():
         parser.error("No database yet. Run collect or restore first.")
     now = int(time.time())
     with closing(connect(args.db)) as db:
         if args.command == "collect":
             print(json.dumps(collect(db, Reddit(), now)))
+        elif args.command == "export":
+            count = export_csv(db, now, args.output)
+            print(f"Exported {count} discussions to {args.output}")
         else:
             data = report(db, now)
             print(

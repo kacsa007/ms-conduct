@@ -1,6 +1,11 @@
 name: Daily Allianz Reddit collection
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/reddit.yml'
+      - 'reddit_monitor/**'
   schedule:
     - cron: '17 4 * * *'
   workflow_dispatch:
@@ -34,3 +39,15 @@ jobs:
           REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
           REDDIT_DB_KEY: ${{ secrets.REDDIT_DB_KEY }}
         run: python -m reddit_monitor daily
+      - name: Upload readable discussions and report
+        id: csv
+        uses: actions/upload-artifact@v4
+        with:
+          name: reddit-discussions-csv
+          path: data/reddit/exports/
+          if-no-files-found: error
+          retention-days: 1
+      - name: Link the CSV download
+        env:
+          ARTIFACT_URL: ${{ steps.csv.outputs.artifact-url }}
+        run: printf '\n[Download discussions CSV and report](%s)\n' "$ARTIFACT_URL" >> "$GITHUB_STEP_SUMMARY"

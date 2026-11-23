@@ -1,3 +1,4 @@
+import csv
 import json
 import sqlite3
 from contextlib import closing
@@ -10,8 +11,38 @@ from cryptography.fernet import Fernet
 from reddit_monitor import archive, collect, store
 from reddit_monitor.__main__ import markdown
 from reddit_monitor.client import BudgetReached, Reddit
+from reddit_monitor.export import export_csv
 
 NOW = 1_795_439_000
+
+
+def test_csv_round_trip_has_source_context_and_fresh_safe_text(tmp_path):
+    output = tmp_path / "exports" / "reddit-discussions.csv"
+    body = 'Allianz said, "We are checking."\nStill waiting – Prämie, sinistre.'
+    with closing(store.connect(tmp_path / "data")) as db:
+        post = thing("t3", "post1", "=Allianz travel claim?")
+        post["data"]["selftext"] = body
+        store.save(db, post, NOW)
+        comment = thing("t1", "reply1", "  @someone, waiting\nfor a reply", "t3_post1")
+        comment["data"]["score"] = -2
+        store.save(db, comment, NOW)
+        store.save(db, thing("t3", "stale1", "Allianz stale"), NOW - store.FRESH)
+        assert (
+            export_csv(db, NOW, output) == store.report(db, NOW)["totals"]["items"] == 2
+        )
+    assert output.read_bytes().startswith(b"\xef\xbb\xbf")
+    with output.open(encoding="utf-8-sig", newline="") as handle:
+        rows = {row["reddit_id"]: row for row in csv.DictReader(handle)}
+    assert rows["t3_post1"]["text"] == body
+    assert rows["t3_post1"]["title"] == "'=Allianz travel claim?"
+    reply = rows["t1_reply1"]
+    assert reply["title"] == "'=Allianz travel claim?"
+    assert reply["text"] == "'  @someone, waiting\nfor a reply"
+    assert reply["score"] == "-2"
+    assert reply["source_url"] == "https://www.reddit.com/comments/post1/_/reply1/"
+    assert reply["wording"] == "Mentions waiting"
+    assert rows["t3_post1"]["direct_brand_mention"] == "1"
+    assert rows["t3_post1"]["created_utc"].endswith("+00:00")
 
 
 def thing(kind, ident, text, thread=None, created=NOW):
