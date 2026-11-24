@@ -6,6 +6,8 @@ The dashboard and source collector support the source-linked articles in
 Findings stay attached to their evidence class, the exact Allianz entity and the
 official source.
 
+[**Download the latest Reddit CSV**](https://github.com/kacsa007/ms-conduct/releases/tag/reddit-csv) · [Browse exports by run](https://github.com/kacsa007/ms-conduct/actions/workflows/reddit.yml)
+
 ## What the code checks
 
 The repository now separates four questions that a conduct dossier has to answer:

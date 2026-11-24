@@ -39,15 +39,47 @@ jobs:
           REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
           REDDIT_DB_KEY: ${{ secrets.REDDIT_DB_KEY }}
         run: python -m reddit_monitor daily
-      - name: Upload readable discussions and report
+      - name: Upload the full discussions CSV and report
         id: csv
+        if: ${{ !cancelled() && (success() || hashFiles('data/reddit/exports/report.md') != '') }}
         uses: actions/upload-artifact@v4
         with:
-          name: reddit-discussions-csv
-          path: data/reddit/exports/
+          name: reddit-discussions-csv-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            data/reddit/exports/reddit-discussions.csv
+            data/reddit/exports/report.md
           if-no-files-found: error
-          retention-days: 1
-      - name: Link the CSV download
+          retention-days: 2
+      - name: Upload aggregate counts for historical research
+        id: counts
+        if: ${{ !cancelled() && (success() || hashFiles('data/reddit/exports/topic-counts.csv') != '') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: reddit-topic-counts-${{ github.run_id }}-${{ github.run_attempt }}
+          path: data/reddit/exports/topic-counts.csv
+          if-no-files-found: error
+          retention-days: 30
+      - name: Update the CSV download page
+        if: ${{ !cancelled() && steps.csv.outcome == 'success' }}
         env:
-          ARTIFACT_URL: ${{ steps.csv.outputs.artifact-url }}
-        run: printf '\n[Download discussions CSV and report](%s)\n' "$ARTIFACT_URL" >> "$GITHUB_STEP_SUMMARY"
+          GH_TOKEN: ${{ github.token }}
+          CSV_URL: ${{ steps.csv.outputs.artifact-url }}
+          COUNTS_URL: ${{ steps.counts.outputs.artifact-url }}
+        run: |
+          notes="$RUNNER_TEMP/reddit-download.md"
+          run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/attempts/$GITHUB_RUN_ATTEMPT"
+          {
+            printf '[**Download the full Reddit discussions CSV (ZIP)**](%s)\n\n' "$CSV_URL"
+            printf 'Exported %s UTC. Sign in to GitHub and unzip the download to open `reddit-discussions.csv`. The ZIP also contains the research summary.\n\n' "$(date -u '+%Y-%m-%d %H:%M')"
+            if [[ -n "$COUNTS_URL" ]]; then
+              printf '[Download aggregate topic and wording counts (CSV in ZIP)](%s)\n\n' "$COUNTS_URL"
+            fi
+            printf 'Full text is available for 2 days per run. Aggregate CSVs are available for 30 days. [This run](%s) · [All collection runs](%s/%s/actions/workflows/reddit.yml)\n' "$run_url" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY"
+          } > "$notes"
+          cat "$notes" >> "$GITHUB_STEP_SUMMARY"
+          if gh release view reddit-csv --repo "$GITHUB_REPOSITORY" > /dev/null; then
+            gh release edit reddit-csv --repo "$GITHUB_REPOSITORY" --notes-file "$notes"
+          else
+            gh release create reddit-csv --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+              --title 'Latest Reddit CSV download' --prerelease --latest=false --notes-file "$notes"
+          fi
