@@ -74,3 +74,14 @@ def export_csv(db, now, output):
             writer.writerow([spreadsheet_cell(value) for value in values])
             count += 1
     return count
+
+
+def export_counts(data, output):
+    """Write the aggregate snapshot, including a total for an empty sample."""
+    fields = ["kind", "label", "posts", "comments", "items"]
+    totals = {**data["totals"], "kind": "total", "label": "All items"}
+    with output.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["as_of_utc", *fields])
+        for row in [totals, *data["labels"]]:
+            writer.writerow([data["as_of"], *(row[key] for key in fields)])

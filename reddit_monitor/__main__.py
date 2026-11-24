@@ -9,7 +9,7 @@ import time
 from .archive import Archive, DEFAULT_REPO, cipher_from_env
 from .client import Reddit
 from .collect import collect
-from .export import DEFAULT_OUTPUT, export_csv
+from .export import DEFAULT_OUTPUT, export_counts, export_csv
 from .store import DEFAULT_DB, connect, report
 
 
@@ -80,6 +80,7 @@ def run_daily(output=DEFAULT_OUTPUT):
             stats = collect(db, Reddit(), now)
             result = report(db, now)
             export_csv(db, now, output / "reddit-discussions.csv")
+            export_counts(result, output / "topic-counts.csv")
             (output / "report.md").write_text(markdown(result) + "\n", encoding="utf-8")
             db.execute("VACUUM")
         archive.publish(

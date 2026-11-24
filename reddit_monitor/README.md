@@ -29,15 +29,21 @@ prerelease named `reddit-data-v1`.
 
 ## Data and reports
 
-Each successful workflow run uploads **reddit-discussions-csv** under
-**Actions → Daily Allianz Reddit collection → completed run → Artifacts**.
-Download and unzip it to open `reddit-discussions.csv` in Excel, Numbers or
-Google Sheets. It includes the full post and comment text, parent post titles,
-source links, dates, scores, brand flags and topic labels. `report.md` contains
-the aggregate report. The run summary also links directly to the download.
-These readable files can be downloaded by people with access to the public
-repository. Each export expires after one day to keep stored copies and Actions
-storage small. A new export is generated daily and after collector changes on main.
+[**Latest Reddit CSV download**](https://github.com/kacsa007/ms-conduct/releases/tag/reddit-csv)
+is the fixed download page. Sign in to GitHub and follow its full CSV link.
+For an earlier export, open the [collection run history](https://github.com/kacsa007/ms-conduct/actions/workflows/reddit.yml)
+and choose the run. The Artifacts section identifies each download by run ID and attempt.
+
+* `reddit-discussions-csv-<run>-<attempt>` contains `reddit-discussions.csv`
+  and `report.md`. It includes post and comment text, parent titles, dates, scores,
+  brand flags, topic labels and source links. Each ZIP is retained for two days.
+* `reddit-topic-counts-<run>-<attempt>` contains `topic-counts.csv` with the snapshot
+  time, totals and post/comment counts for each topic or wording label. It is
+  retained for 30 days. Counts can overlap across labels and collection days.
+
+The fixed page links to the latest completed export even when a later run fails
+before producing files. GitHub requires a signed-in account with repository
+read access to download Actions artifacts.
 
 The CSV uses UTF-8 with a byte-order mark for Excel. Cells beginning with
 spreadsheet formula markers have a leading apostrophe so discussion text opens
@@ -98,7 +104,7 @@ AND i.seen > unixepoch('now', '-44 hours') ORDER BY i.created DESC LIMIT 20;
   resume from stored child IDs. The job times out at 12 minutes. A 31-day month
   therefore uses at most 372 scheduled runner minutes. Standard hosted runners
   are free for public repositories. Private forks share their plan's allowance
-  with other workflows. CSV artifacts are retained for one day. The encrypted
+  with other workflows. Full-text artifacts are retained for two days. The encrypted
   database is stored in the release.
 * The active index holds up to 4,000 items. Each run rechecks due records using
   Reddit's bulk info endpoint. Unavailable items and replies to unavailable

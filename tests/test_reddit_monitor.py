@@ -11,7 +11,7 @@ from cryptography.fernet import Fernet
 from reddit_monitor import archive, collect, store
 from reddit_monitor.__main__ import markdown
 from reddit_monitor.client import BudgetReached, Reddit
-from reddit_monitor.export import export_csv
+from reddit_monitor.export import export_counts, export_csv
 
 NOW = 1_795_439_000
 
@@ -43,6 +43,21 @@ def test_csv_round_trip_has_source_context_and_fresh_safe_text(tmp_path):
     assert reply["wording"] == "Mentions waiting"
     assert rows["t3_post1"]["direct_brand_mention"] == "1"
     assert rows["t3_post1"]["created_utc"].endswith("+00:00")
+
+
+def test_aggregate_export_counts_items_once_in_totals(tmp_path):
+    path = tmp_path / "counts.csv"
+    with closing(store.connect(tmp_path / "db")) as db:
+        store.save(db, thing("t3", "aa", "Allianz travel claim?"), NOW)
+        store.save(db, thing("t1", "bb", "A claim", "t3_aa"), NOW)
+        data = store.report(db, NOW)
+        export_counts(data, path)
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        rows = {r["label"]: r for r in csv.DictReader(handle)}
+    assert rows["All items"]["items"] == rows["Claims"]["items"] == "2"
+    assert rows["Claims"]["posts"] == rows["Claims"]["comments"] == "1"
+    assert rows["Travel insurance"]["items"] == "1"
+    assert rows["All items"]["as_of_utc"] == data["as_of"]
 
 
 def thing(kind, ident, text, thread=None, created=NOW):
